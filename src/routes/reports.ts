@@ -19,7 +19,7 @@ function calcZoneExceptionDurationFromAlerts(
   for (const a of alerts) {
     if (a.zoneId !== zoneId && a.zoneId !== 'default') continue;
     if (a.alertType !== 'over_temp_high' && a.alertType !== 'over_temp_low') continue;
-    if (a.status === 'observing' && a.result?.includes('未达到持续阈值')) continue;
+    if (a.result?.includes('未达到持续阈值')) continue;
     totalAlerts++;
     if (typeof a.durationSeconds === 'number') {
       totalDurationSec += a.durationSeconds;
@@ -36,9 +36,9 @@ function generateReport(waybillId: string): TemperatureReport | null {
 
   const allRecords = storage.getTemperatureRecords(waybillId);
   const allAlerts = storage.getAlerts(waybillId);
-  const publicAlerts = allAlerts.filter(a => a.status !== 'observing' || !a.result?.includes('未达到持续阈值'));
+  const publicAlerts = allAlerts.filter(a => !a.result?.includes('未达到持续阈值'));
   const alertsForCustomer = allAlerts.filter(
-    a => a.status !== 'observing'
+    a => a.status !== 'observing' && !a.result?.includes('未达到持续阈值')
   );
   const doorEvents = storage.getDoorEvents(waybillId);
 

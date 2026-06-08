@@ -7,7 +7,9 @@ const storage = Storage.getInstance();
 
 function calcDurationAndStats(waybillId: string) {
   const allAlerts = storage.getAlerts(waybillId);
-  const alerts = allAlerts.filter(a => a.status !== 'observing');
+  const alerts = allAlerts.filter(
+    a => a.status !== 'observing' && !(a.result?.includes('未达到持续阈值'))
+  );
   const records = storage.getTemperatureRecords(waybillId);
   const doorEvents = storage.getDoorEvents(waybillId);
 
@@ -22,6 +24,7 @@ function calcDurationAndStats(waybillId: string) {
 
   const handlingRecords = alerts
     .filter(a => a.status === 'processing' || a.status === 'resolved' || a.status === 'ignored')
+    .filter(a => !(a.result?.includes('未达到持续阈值')))
     .sort((a, b) => (a.handleTime || 0) - (b.handleTime || 0))
     .map(a => ({
       alertId: a.id,

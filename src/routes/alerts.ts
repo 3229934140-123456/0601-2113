@@ -15,7 +15,7 @@ router.get('/', (req: Request, res: Response) => {
     status as string | undefined
   );
   if (includeObserving !== 'true') {
-    alerts = alerts.filter(a => a.status !== 'observing');
+    alerts = alerts.filter(a => a.status !== 'observing' && !(a.status === 'resolved' && a.result?.includes('未达到持续阈值')));
   }
   success(res, { alerts, total: alerts.length });
 });
@@ -41,7 +41,9 @@ router.get('/:id', (req: Request, res: Response) => {
 
 router.get('/waybill/:waybillId', (req: Request, res: Response) => {
   const allAlerts = storage.getAlerts(req.params.waybillId);
-  const alerts = allAlerts.filter(a => a.status !== 'observing');
+  const alerts = allAlerts.filter(
+    a => a.status !== 'observing' && !(a.status === 'resolved' && a.result?.includes('未达到持续阈值'))
+  );
   const pendingList = alerts.filter(a => a.status === 'pending');
   const processingList = alerts.filter(a => a.status === 'processing');
   const resolvedList = alerts.filter(a => a.status === 'resolved');
@@ -49,6 +51,7 @@ router.get('/waybill/:waybillId', (req: Request, res: Response) => {
 
   const handlingRecords = alerts
     .filter(a => a.status === 'processing' || a.status === 'resolved' || a.status === 'ignored')
+    .filter(a => !(a.status === 'resolved' && a.result?.includes('未达到持续阈值')))
     .map(a => ({
       alertId: a.id,
       alertType: a.alertType,
@@ -152,8 +155,12 @@ router.get('/vehicle/:vehicleId/active', (req: Request, res: Response) => {
     return success(res, { alerts: [], processing: [], total: 0 });
   }
   const allAlerts = storage.getAlerts(waybill.id);
-  const pending = allAlerts.filter(a => a.status === 'pending');
-  const processing = allAlerts.filter(a => a.status === 'processing');
+  const pending = allAlerts.filter(
+    a => a.status === 'pending' && !(a.status === 'resolved' && a.result?.includes('未达到持续阈值'))
+  );
+  const processing = allAlerts.filter(
+    a => a.status === 'processing' && !(a.status === 'resolved' && a.result?.includes('未达到持续阈值'))
+  );
   success(res, {
     waybillId: waybill.id,
     waybillNo: waybill.waybillNo,

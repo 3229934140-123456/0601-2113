@@ -99,12 +99,29 @@ export class AlertService {
         );
       if (observingAlert) {
         const duration = Math.floor((record.timestamp - observingAlert.startTime) / 1000);
-        this.storage.updateAlert(observingAlert.id, {
-          status: 'resolved',
-          endTime: record.timestamp,
-          durationSeconds: duration,
-          result: '温度自动恢复正常，未达到持续阈值',
-        });
+        if (duration >= zone.durationThreshold) {
+          const alertType = observingAlert.alertType;
+          const deviation =
+            alertType === 'over_temp_high'
+              ? (observingAlert.temperature || zone.maxTemp) - zone.maxTemp
+              : zone.minTemp - (observingAlert.temperature || zone.minTemp);
+          const level = getAlertLevel(alertType, deviation);
+          this.storage.updateAlert(observingAlert.id, {
+            status: 'resolved',
+            alertLevel: level,
+            endTime: record.timestamp,
+            durationSeconds: duration,
+            suggestions: [...OVER_TEMP_SUGGESTIONS],
+            result: '温度自动恢复正常',
+          });
+        } else {
+          this.storage.updateAlert(observingAlert.id, {
+            status: 'resolved',
+            endTime: record.timestamp,
+            durationSeconds: duration,
+            result: '温度自动恢复正常，未达到持续阈值',
+          });
+        }
       }
 
       const activeAlert = this.storage
