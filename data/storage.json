@@ -1,0 +1,4285 @@
+{
+  "vehicles": [
+    {
+      "id": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "plateNumber": "沪A·88888",
+      "deviceId": "DEV-001",
+      "driverName": "张师傅",
+      "driverPhone": "13800138001",
+      "status": "active",
+      "createdAt": 1780953241149,
+      "updatedAt": 1780953241149
+    },
+    {
+      "id": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "plateNumber": "沪B·66666",
+      "deviceId": "DEV-002",
+      "driverName": "李师傅",
+      "driverPhone": "13800138002",
+      "status": "active",
+      "createdAt": 1780953241149,
+      "updatedAt": 1780953241149
+    }
+  ],
+  "waybills": [
+    {
+      "id": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "waybillNo": "YB2024010001",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "customerId": "CUST-001",
+      "customerName": "某生鲜连锁超市",
+      "goodsName": "冷冻猪肉",
+      "origin": "上海市浦东新区冷链物流中心",
+      "destination": "上海市徐汇区某超市门店",
+      "planDepartureTime": 1780946041149,
+      "planArrivalTime": 1780956841149,
+      "actualDepartureTime": 1780946041149,
+      "temperatureZones": [
+        {
+          "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+          "zoneName": "冷冻区",
+          "minTemp": -20,
+          "maxTemp": -12,
+          "durationThreshold": 300
+        }
+      ],
+      "status": "in_transit",
+      "signStatus": "unsigned",
+      "createdAt": 1780953241149,
+      "updatedAt": 1780953241149
+    },
+    {
+      "id": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "waybillNo": "YB2024010002",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "customerId": "CUST-002",
+      "customerName": "某医药公司",
+      "goodsName": "生物制剂",
+      "origin": "上海市青浦区医药仓储中心",
+      "destination": "上海市静安区某医院",
+      "planDepartureTime": 1780935241149,
+      "planArrivalTime": 1780949641149,
+      "actualDepartureTime": 1780935241149,
+      "actualArrivalTime": 1780949641149,
+      "temperatureZones": [
+        {
+          "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+          "zoneName": "冷藏区",
+          "minTemp": 2,
+          "maxTemp": 8,
+          "durationThreshold": 300
+        }
+      ],
+      "status": "delivered",
+      "signStatus": "unsigned",
+      "createdAt": 1780953241149,
+      "updatedAt": 1780953241149
+    }
+  ],
+  "temperatureRecords": [
+    {
+      "id": "2384e1cc-2252-48eb-86b7-553deeffcef7",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -15.3,
+      "humidity": 89.16096527265181,
+      "timestamp": 1780946041149,
+      "location": {
+        "latitude": 31.2304,
+        "longitude": 121.4737
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "aa836cb3-3afd-4f7f-833f-1fdc3db004e5",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -16.7,
+      "humidity": 86.54150587407355,
+      "timestamp": 1780946101149,
+      "location": {
+        "latitude": 31.2314,
+        "longitude": 121.47449999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "7ab35de5-6d5b-40b4-af1b-202878ff4504",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -15.1,
+      "humidity": 85.2934837136077,
+      "timestamp": 1780946161149,
+      "location": {
+        "latitude": 31.2324,
+        "longitude": 121.47529999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "464f848d-e914-412b-9348-02b868b7ceab",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -16.2,
+      "humidity": 89.70942263979555,
+      "timestamp": 1780946221149,
+      "location": {
+        "latitude": 31.2334,
+        "longitude": 121.47609999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "dac39df4-fbc4-4794-b827-650782c14eec",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -16.4,
+      "humidity": 87.46905556448183,
+      "timestamp": 1780946281149,
+      "location": {
+        "latitude": 31.2344,
+        "longitude": 121.4769
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "6885245d-63cb-4b28-9eaa-33e509b2c235",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -15.1,
+      "humidity": 89.80773853914856,
+      "timestamp": 1780946341149,
+      "location": {
+        "latitude": 31.2354,
+        "longitude": 121.4777
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "38b8da33-2f6c-4794-a8a0-b9862c76a117",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -16.8,
+      "humidity": 85.63958243311741,
+      "timestamp": 1780946401149,
+      "location": {
+        "latitude": 31.2364,
+        "longitude": 121.4785
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "3a43ff2a-1452-4bd4-a7af-dca30a38ff40",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -15.8,
+      "humidity": 88.74204467131337,
+      "timestamp": 1780946461149,
+      "location": {
+        "latitude": 31.2374,
+        "longitude": 121.4793
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "7b53876b-8ef0-492b-81b8-6822ee8f5026",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -16.6,
+      "humidity": 88.88416844095296,
+      "timestamp": 1780946521149,
+      "location": {
+        "latitude": 31.2384,
+        "longitude": 121.4801
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "bf98f6b5-cc13-47c6-aad7-29c36814042a",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -15.8,
+      "humidity": 87.35005120409856,
+      "timestamp": 1780946581149,
+      "location": {
+        "latitude": 31.2394,
+        "longitude": 121.48089999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "6ed272ae-8b1f-45f3-a8c9-c712a2e663e8",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -17,
+      "humidity": 86.31019624415676,
+      "timestamp": 1780946641149,
+      "location": {
+        "latitude": 31.2404,
+        "longitude": 121.48169999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "60556929-d1d6-4e2e-8c7b-eb344b38cf9c",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -16.5,
+      "humidity": 86.69661293468911,
+      "timestamp": 1780946701149,
+      "location": {
+        "latitude": 31.2414,
+        "longitude": 121.48249999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "c11fad2a-7f74-4627-8c8c-acfcab9938bf",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -16.5,
+      "humidity": 85.75941701201559,
+      "timestamp": 1780946761149,
+      "location": {
+        "latitude": 31.2424,
+        "longitude": 121.4833
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "8a32794d-47f2-4017-9987-17a459e15946",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -16.9,
+      "humidity": 87.17469410731896,
+      "timestamp": 1780946821149,
+      "location": {
+        "latitude": 31.2434,
+        "longitude": 121.4841
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "2234b474-c2da-4d9d-8925-b0e2eb58fc70",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -16.3,
+      "humidity": 85.44381421413989,
+      "timestamp": 1780946881149,
+      "location": {
+        "latitude": 31.2444,
+        "longitude": 121.4849
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "13cecaf0-5d2f-40ae-8c31-2cdc8db5bae7",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -15.5,
+      "humidity": 85.55655766273694,
+      "timestamp": 1780946941149,
+      "location": {
+        "latitude": 31.2454,
+        "longitude": 121.4857
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "2e524a28-5381-4bcf-9f16-ed50759fdcfa",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -15.8,
+      "humidity": 85.54353795588021,
+      "timestamp": 1780947001149,
+      "location": {
+        "latitude": 31.246399999999998,
+        "longitude": 121.48649999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "a90fd738-8311-44ba-be9d-9a79e93d32d7",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -16.6,
+      "humidity": 87.59876199196484,
+      "timestamp": 1780947061149,
+      "location": {
+        "latitude": 31.2474,
+        "longitude": 121.48729999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "f0defd41-967e-4e41-b339-a7eb3ac554e1",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -15.8,
+      "humidity": 85.80281718530725,
+      "timestamp": 1780947121149,
+      "location": {
+        "latitude": 31.2484,
+        "longitude": 121.48809999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "4852db59-df29-456f-8571-f9b343ab9426",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -15,
+      "humidity": 87.53202711274047,
+      "timestamp": 1780947181149,
+      "location": {
+        "latitude": 31.249399999999998,
+        "longitude": 121.48889999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "1d2fdbd0-fa71-4c89-b281-c336cb1da71a",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -16.4,
+      "humidity": 88.56300885255378,
+      "timestamp": 1780947241149,
+      "location": {
+        "latitude": 31.2504,
+        "longitude": 121.4897
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "338733ad-c778-4c38-9352-de60bf4c270f",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -15.1,
+      "humidity": 85.06450251408074,
+      "timestamp": 1780947301149,
+      "location": {
+        "latitude": 31.2514,
+        "longitude": 121.4905
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "dc61b3be-7cd1-4484-9a2b-fef5a6fead32",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -16.8,
+      "humidity": 85.21177732181631,
+      "timestamp": 1780947361149,
+      "location": {
+        "latitude": 31.252399999999998,
+        "longitude": 121.4913
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "116085e1-9e36-449b-ab55-c5fd4b693435",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -16.2,
+      "humidity": 88.23500182099943,
+      "timestamp": 1780947421149,
+      "location": {
+        "latitude": 31.2534,
+        "longitude": 121.4921
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "f0ce844a-c6b0-4e35-b6aa-f225fbfefaeb",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -16.3,
+      "humidity": 89.43870916742895,
+      "timestamp": 1780947481149,
+      "location": {
+        "latitude": 31.2544,
+        "longitude": 121.49289999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "46224710-5028-4c9f-a67c-d9fb79e77772",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -17,
+      "humidity": 85.4581366907056,
+      "timestamp": 1780947541149,
+      "location": {
+        "latitude": 31.255399999999998,
+        "longitude": 121.49369999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "32ea0e11-555b-4ab1-8007-d0601a5c84b5",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -15.2,
+      "humidity": 89.62866708693852,
+      "timestamp": 1780947601149,
+      "location": {
+        "latitude": 31.2564,
+        "longitude": 121.49449999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "37a8cced-c79d-41a4-be22-9537703686f8",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -16.9,
+      "humidity": 86.39006027321538,
+      "timestamp": 1780947661149,
+      "location": {
+        "latitude": 31.2574,
+        "longitude": 121.4953
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "55646950-fbe8-473b-8fdb-a4b8042ebabc",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -16.7,
+      "humidity": 85.02031159246158,
+      "timestamp": 1780947721149,
+      "location": {
+        "latitude": 31.258399999999998,
+        "longitude": 121.4961
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "950a10e3-3e46-47e2-9adc-41151382de9b",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -16.5,
+      "humidity": 87.51928459854092,
+      "timestamp": 1780947781149,
+      "location": {
+        "latitude": 31.2594,
+        "longitude": 121.4969
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "8709c14c-e29b-4374-aab3-162ad05c77a4",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -16,
+      "humidity": 88.83020178990999,
+      "timestamp": 1780947841149,
+      "location": {
+        "latitude": 31.2604,
+        "longitude": 121.4977
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "9cb98272-a239-41ba-bfab-09724813c4d7",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -15.4,
+      "humidity": 88.23098163408136,
+      "timestamp": 1780947901149,
+      "location": {
+        "latitude": 31.2614,
+        "longitude": 121.49849999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "783df97b-6f8c-4a67-bab3-94ede5e81a2c",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -16.7,
+      "humidity": 85.48021579130572,
+      "timestamp": 1780947961149,
+      "location": {
+        "latitude": 31.2624,
+        "longitude": 121.49929999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "5de393b2-1358-400a-b8dd-f9e4f6e3f980",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -16.1,
+      "humidity": 85.12119298919608,
+      "timestamp": 1780948021149,
+      "location": {
+        "latitude": 31.2634,
+        "longitude": 121.50009999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "cc746ffe-2da5-4107-b443-6107972f2d41",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -17,
+      "humidity": 86.57676460303941,
+      "timestamp": 1780948081149,
+      "location": {
+        "latitude": 31.2644,
+        "longitude": 121.50089999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "38ed0afa-4a96-42d1-a91c-dea22fc5f169",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -15.2,
+      "humidity": 86.28544153547583,
+      "timestamp": 1780948141149,
+      "location": {
+        "latitude": 31.2654,
+        "longitude": 121.5017
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "b4795a7b-8555-45af-9b08-09a816446137",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -16.1,
+      "humidity": 89.77268582979862,
+      "timestamp": 1780948201149,
+      "location": {
+        "latitude": 31.2664,
+        "longitude": 121.5025
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "d3881d40-20df-4c67-8425-73e3f319025f",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -15.6,
+      "humidity": 85.78617468427872,
+      "timestamp": 1780948261149,
+      "location": {
+        "latitude": 31.2674,
+        "longitude": 121.5033
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "2569ee17-faea-4eb1-a3f1-d16d310b2d99",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -16.1,
+      "humidity": 88.39850094885831,
+      "timestamp": 1780948321149,
+      "location": {
+        "latitude": 31.2684,
+        "longitude": 121.5041
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "9a8d5066-67b5-4e84-86b3-e3342abcfa8f",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -16.1,
+      "humidity": 87.78776481171668,
+      "timestamp": 1780948381149,
+      "location": {
+        "latitude": 31.2694,
+        "longitude": 121.50489999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "3642645d-a0c2-4349-9a47-cb5cf79ee246",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -8.4,
+      "humidity": 85.32339184416622,
+      "timestamp": 1780948441149,
+      "location": {
+        "latitude": 31.2704,
+        "longitude": 121.50569999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "216a9c7a-9047-4309-9bf6-053d760db319",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -7.6,
+      "humidity": 88.9776652628633,
+      "timestamp": 1780948501149,
+      "location": {
+        "latitude": 31.2714,
+        "longitude": 121.50649999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "3ef04395-9159-44a6-b248-c72a8679a88f",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -7.7,
+      "humidity": 86.51986554889416,
+      "timestamp": 1780948561149,
+      "location": {
+        "latitude": 31.2724,
+        "longitude": 121.5073
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "ed1b5495-ff3f-4db7-8a60-76c847b9f563",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -7.9,
+      "humidity": 85.74286541896507,
+      "timestamp": 1780948621149,
+      "location": {
+        "latitude": 31.2734,
+        "longitude": 121.5081
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "40da1f6a-c39a-42e1-aa37-3645b3c05415",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -8.1,
+      "humidity": 89.70954704464216,
+      "timestamp": 1780948681149,
+      "location": {
+        "latitude": 31.2744,
+        "longitude": 121.5089
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "7b50b972-b7dc-4fb1-b3b9-74bf91a775f4",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -7.9,
+      "humidity": 86.619576805796,
+      "timestamp": 1780948741149,
+      "location": {
+        "latitude": 31.2754,
+        "longitude": 121.5097
+      },
+      "isDoorOpen": true,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "a34f2b15-7cce-42d1-9438-83e743141846",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -8.5,
+      "humidity": 89.90861340480018,
+      "timestamp": 1780948801149,
+      "location": {
+        "latitude": 31.2764,
+        "longitude": 121.5105
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "1b67435a-01a7-41a8-b5ef-c66cc5e31f75",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -8,
+      "humidity": 87.53024955189122,
+      "timestamp": 1780948861149,
+      "location": {
+        "latitude": 31.2774,
+        "longitude": 121.51129999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "50748be1-a3b0-4613-a4fd-79274a0654ec",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -8,
+      "humidity": 86.26967873385978,
+      "timestamp": 1780948921149,
+      "location": {
+        "latitude": 31.278399999999998,
+        "longitude": 121.51209999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "c4cc941f-1fa6-4aef-be39-9fb10f0935f4",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -7.6,
+      "humidity": 85.5656028552856,
+      "timestamp": 1780948981149,
+      "location": {
+        "latitude": 31.2794,
+        "longitude": 121.51289999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "f3fcfca3-7ba3-4ecb-a09b-efe2ff5c4e45",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -8,
+      "humidity": 87.4160535126311,
+      "timestamp": 1780949041149,
+      "location": {
+        "latitude": 31.2804,
+        "longitude": 121.5137
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "2f6d9a28-3c75-4f19-adc5-e23f5ef6ac06",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -17,
+      "humidity": 86.85745604650204,
+      "timestamp": 1780949101149,
+      "location": {
+        "latitude": 31.281399999999998,
+        "longitude": 121.5145
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "22668efe-f40e-4b62-9f93-d98200c4ff99",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -15.5,
+      "humidity": 89.43850962707438,
+      "timestamp": 1780949161149,
+      "location": {
+        "latitude": 31.2824,
+        "longitude": 121.5153
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "45b6abc8-7e25-4138-8b3a-ed3571e5ee96",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -16.7,
+      "humidity": 87.14316191718581,
+      "timestamp": 1780949221149,
+      "location": {
+        "latitude": 31.2834,
+        "longitude": 121.5161
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "d7cc153d-bb49-4c28-898f-c12dbf96951c",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -15.4,
+      "humidity": 86.50032022952655,
+      "timestamp": 1780949281149,
+      "location": {
+        "latitude": 31.284399999999998,
+        "longitude": 121.51689999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "5b4cc11d-f0f7-4046-89cd-77d1b80610db",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -15.5,
+      "humidity": 85.63589441600958,
+      "timestamp": 1780949341149,
+      "location": {
+        "latitude": 31.2854,
+        "longitude": 121.51769999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "f8a24539-baf7-4c6c-b8f7-8f7b12f332bd",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -15.3,
+      "humidity": 85.7959413459664,
+      "timestamp": 1780949401149,
+      "location": {
+        "latitude": 31.2864,
+        "longitude": 121.51849999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "a4326a92-9942-4d7b-9a4f-ded366f4d54b",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -16.7,
+      "humidity": 89.86340807302646,
+      "timestamp": 1780949461149,
+      "location": {
+        "latitude": 31.287399999999998,
+        "longitude": 121.51929999999999
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "bbd45b31-6dcd-4ebe-923a-7d53eed0f136",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -16.1,
+      "humidity": 88.71872073540227,
+      "timestamp": 1780949521149,
+      "location": {
+        "latitude": 31.2884,
+        "longitude": 121.5201
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "ab83f465-0f45-44ea-8299-1da024758ee1",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "zoneId": "90b5c5ba-2f92-4342-8920-44ff3183e982",
+      "temperature": -15.2,
+      "humidity": 89.8778562774341,
+      "timestamp": 1780949581149,
+      "location": {
+        "latitude": 31.2894,
+        "longitude": 121.5209
+      },
+      "isDoorOpen": false,
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "37dc3d1c-7a82-4f96-8df4-15695760f136",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.9,
+      "humidity": 62.665013888487884,
+      "timestamp": 1780935241149,
+      "location": {
+        "latitude": 31.1804,
+        "longitude": 121.3037
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "eafe9478-fb27-4142-9411-240a1caf5740",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5,
+      "humidity": 66.45842972631263,
+      "timestamp": 1780935301149,
+      "location": {
+        "latitude": 31.180899999999998,
+        "longitude": 121.30430000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "cd6692bd-b218-45e1-aa22-706208d0f873",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.7,
+      "humidity": 66.5281609615426,
+      "timestamp": 1780935361149,
+      "location": {
+        "latitude": 31.1814,
+        "longitude": 121.3049
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "f4103f14-0d40-410c-8199-b6002fe30af4",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.5,
+      "humidity": 68.24444372967798,
+      "timestamp": 1780935421149,
+      "location": {
+        "latitude": 31.1819,
+        "longitude": 121.30550000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "5d141c4c-4ac4-49e4-adc4-8ded3c298e79",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.7,
+      "humidity": 62.89336556969953,
+      "timestamp": 1780935481149,
+      "location": {
+        "latitude": 31.182399999999998,
+        "longitude": 121.3061
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "aeec2caf-8197-48ea-b7d5-6d7e73e9adf0",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.7,
+      "humidity": 66.75371049402001,
+      "timestamp": 1780935541149,
+      "location": {
+        "latitude": 31.1829,
+        "longitude": 121.3067
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "b9810872-2b03-48f4-8cf1-76eec8cc4741",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.5,
+      "humidity": 69.20433840065228,
+      "timestamp": 1780935601149,
+      "location": {
+        "latitude": 31.1834,
+        "longitude": 121.30730000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "68cb2d35-0e98-4c6a-8f55-57d11d8b9d61",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5,
+      "humidity": 62.93617673146677,
+      "timestamp": 1780935661149,
+      "location": {
+        "latitude": 31.183899999999998,
+        "longitude": 121.3079
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "9cd64fa8-c48f-4225-800b-162aec9a3b93",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.1,
+      "humidity": 60.35346178597901,
+      "timestamp": 1780935721149,
+      "location": {
+        "latitude": 31.1844,
+        "longitude": 121.30850000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "5ac618df-05ba-4d93-92ce-5645a1ef361b",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.4,
+      "humidity": 68.27544032558596,
+      "timestamp": 1780935781149,
+      "location": {
+        "latitude": 31.1849,
+        "longitude": 121.3091
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "9e3c3155-b304-46aa-aca9-c78051f6385f",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.3,
+      "humidity": 62.066342528739376,
+      "timestamp": 1780935841149,
+      "location": {
+        "latitude": 31.185399999999998,
+        "longitude": 121.3097
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "d3eeb039-b448-4ec6-a55f-a46f1a4eba53",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.1,
+      "humidity": 62.54855502547827,
+      "timestamp": 1780935901149,
+      "location": {
+        "latitude": 31.1859,
+        "longitude": 121.31030000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "62603498-5b7f-40f3-91e0-f3ff9bd54af6",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.7,
+      "humidity": 63.93953244162757,
+      "timestamp": 1780935961149,
+      "location": {
+        "latitude": 31.1864,
+        "longitude": 121.3109
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "0159b4cb-4910-4a5f-9165-ff3ca07d6d2a",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.1,
+      "humidity": 66.34207253244244,
+      "timestamp": 1780936021149,
+      "location": {
+        "latitude": 31.186899999999998,
+        "longitude": 121.31150000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "1f4580c6-6867-46b7-9d28-4ae001be738d",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.5,
+      "humidity": 67.35642859112461,
+      "timestamp": 1780936081149,
+      "location": {
+        "latitude": 31.1874,
+        "longitude": 121.3121
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "56db1aca-0338-40d8-b5cc-0537eac0089b",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.9,
+      "humidity": 62.290369337509105,
+      "timestamp": 1780936141149,
+      "location": {
+        "latitude": 31.1879,
+        "longitude": 121.3127
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "8d3ad657-117d-49f0-a812-212ef5d4e74d",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.9,
+      "humidity": 69.90388053771318,
+      "timestamp": 1780936201149,
+      "location": {
+        "latitude": 31.188399999999998,
+        "longitude": 121.31330000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "5f9b1a6f-f3c9-4008-a44d-d0c4f15cd135",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.4,
+      "humidity": 65.58649159443283,
+      "timestamp": 1780936261149,
+      "location": {
+        "latitude": 31.1889,
+        "longitude": 121.3139
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "b0233f1d-4b4d-46d6-b2a1-08c3374abfaf",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.1,
+      "humidity": 62.97536764575815,
+      "timestamp": 1780936321149,
+      "location": {
+        "latitude": 31.1894,
+        "longitude": 121.31450000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "511f74f4-0754-467d-8629-caea3bea2227",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.1,
+      "humidity": 67.1288836751272,
+      "timestamp": 1780936381149,
+      "location": {
+        "latitude": 31.189899999999998,
+        "longitude": 121.3151
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "b478a7cb-309a-4677-a99a-76e1ca5b0eeb",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.4,
+      "humidity": 61.982476055503454,
+      "timestamp": 1780936441149,
+      "location": {
+        "latitude": 31.1904,
+        "longitude": 121.3157
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "d9567bca-83a9-46d9-ae5d-ad35f27ffafb",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.2,
+      "humidity": 65.10950327557926,
+      "timestamp": 1780936501149,
+      "location": {
+        "latitude": 31.1909,
+        "longitude": 121.31630000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "822241fd-c7b7-4958-8aff-dc0236486636",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.7,
+      "humidity": 61.93603593196033,
+      "timestamp": 1780936561149,
+      "location": {
+        "latitude": 31.191399999999998,
+        "longitude": 121.3169
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "8ecbd41c-67db-4c6f-b03f-5fcf7d9f7a94",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.3,
+      "humidity": 69.40106649063308,
+      "timestamp": 1780936621149,
+      "location": {
+        "latitude": 31.1919,
+        "longitude": 121.31750000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "acd4e0e6-66dd-4127-90bf-0089a330ef85",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4,
+      "humidity": 68.84844689276146,
+      "timestamp": 1780936681149,
+      "location": {
+        "latitude": 31.1924,
+        "longitude": 121.3181
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "9bd1831b-7061-4f6b-889e-d63bac55b9b7",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.3,
+      "humidity": 62.19253806174399,
+      "timestamp": 1780936741149,
+      "location": {
+        "latitude": 31.192899999999998,
+        "longitude": 121.3187
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "d48d6b79-3068-474c-b3a4-989e0bdafb3f",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.4,
+      "humidity": 61.458159834441645,
+      "timestamp": 1780936801149,
+      "location": {
+        "latitude": 31.1934,
+        "longitude": 121.31930000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "d657ac0f-e993-4200-bd94-87106216345c",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.7,
+      "humidity": 69.87103690944238,
+      "timestamp": 1780936861149,
+      "location": {
+        "latitude": 31.1939,
+        "longitude": 121.3199
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "2ecc65c5-8052-44bb-9a24-c63f890b9e6a",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.7,
+      "humidity": 61.9401499343446,
+      "timestamp": 1780936921149,
+      "location": {
+        "latitude": 31.194399999999998,
+        "longitude": 121.32050000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "eede6077-958a-45f2-9ce8-184840b18426",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.1,
+      "humidity": 61.2283710491789,
+      "timestamp": 1780936981149,
+      "location": {
+        "latitude": 31.1949,
+        "longitude": 121.3211
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "e837f9c7-af5b-4da0-a927-956dd07ee14c",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.4,
+      "humidity": 67.29700730476074,
+      "timestamp": 1780937041149,
+      "location": {
+        "latitude": 31.1954,
+        "longitude": 121.3217
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "82062c65-89a2-4c77-923f-0cb933ee4a6f",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.4,
+      "humidity": 66.70857175668198,
+      "timestamp": 1780937101149,
+      "location": {
+        "latitude": 31.195899999999998,
+        "longitude": 121.32230000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "51842f49-1e87-44da-a711-badfd0af4e28",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.7,
+      "humidity": 61.47594834249232,
+      "timestamp": 1780937161149,
+      "location": {
+        "latitude": 31.196399999999997,
+        "longitude": 121.3229
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "64e07f0c-1849-448d-bba8-0d82a3eb629c",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.1,
+      "humidity": 69.62075779498205,
+      "timestamp": 1780937221149,
+      "location": {
+        "latitude": 31.1969,
+        "longitude": 121.32350000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "e0f793e2-9136-4184-927b-d0d373b3723a",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.3,
+      "humidity": 65.7071742554624,
+      "timestamp": 1780937281149,
+      "location": {
+        "latitude": 31.1974,
+        "longitude": 121.3241
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "c2bc75d6-e8b3-4c08-82cf-4c3447645788",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.2,
+      "humidity": 65.42769423728521,
+      "timestamp": 1780937341149,
+      "location": {
+        "latitude": 31.197899999999997,
+        "longitude": 121.3247
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "aa3afe25-9162-450e-8628-b53a92b5745a",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.7,
+      "humidity": 67.71859173772017,
+      "timestamp": 1780937401149,
+      "location": {
+        "latitude": 31.1984,
+        "longitude": 121.32530000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "8d05ca63-9272-4034-af50-0c3ed50da8b6",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.6,
+      "humidity": 69.31304316413446,
+      "timestamp": 1780937461149,
+      "location": {
+        "latitude": 31.1989,
+        "longitude": 121.3259
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "38bb871b-9099-4892-afc4-14b9e4c45293",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.8,
+      "humidity": 66.74323332527878,
+      "timestamp": 1780937521149,
+      "location": {
+        "latitude": 31.199399999999997,
+        "longitude": 121.32650000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "19fb5ca4-a25d-43b7-9ae2-4ccf1032e9a2",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.4,
+      "humidity": 67.25373546100596,
+      "timestamp": 1780937581149,
+      "location": {
+        "latitude": 31.1999,
+        "longitude": 121.3271
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "e5f71f61-ffa7-44c3-a3ae-66bcd171794b",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.2,
+      "humidity": 68.1826190766038,
+      "timestamp": 1780937641149,
+      "location": {
+        "latitude": 31.2004,
+        "longitude": 121.32770000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "b60c1bda-cbae-4b0b-bb88-a0c743201fd3",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.2,
+      "humidity": 69.05750158133642,
+      "timestamp": 1780937701149,
+      "location": {
+        "latitude": 31.200899999999997,
+        "longitude": 121.32830000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "6dc86d7b-8243-4fc0-b1d6-0316f8638024",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5,
+      "humidity": 67.26236672314447,
+      "timestamp": 1780937761149,
+      "location": {
+        "latitude": 31.2014,
+        "longitude": 121.3289
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "28fbe442-dab8-42ae-9d5a-d7ed0afec2cc",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.1,
+      "humidity": 66.93806044108403,
+      "timestamp": 1780937821149,
+      "location": {
+        "latitude": 31.2019,
+        "longitude": 121.32950000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "94b083d4-f702-4f51-a9e5-c701623ce066",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.6,
+      "humidity": 61.134954871930496,
+      "timestamp": 1780937881149,
+      "location": {
+        "latitude": 31.202399999999997,
+        "longitude": 121.3301
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "9b1f5b38-d891-4819-b7df-1f12875c513c",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.4,
+      "humidity": 67.62200695416192,
+      "timestamp": 1780937941149,
+      "location": {
+        "latitude": 31.2029,
+        "longitude": 121.33070000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "d4ef969b-9128-498f-acfd-76afda98489e",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.3,
+      "humidity": 63.01277716362885,
+      "timestamp": 1780938001149,
+      "location": {
+        "latitude": 31.2034,
+        "longitude": 121.33130000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "77abe4c1-eefe-487e-808f-d3e73b15d1e3",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.7,
+      "humidity": 65.4899902504903,
+      "timestamp": 1780938061149,
+      "location": {
+        "latitude": 31.203899999999997,
+        "longitude": 121.3319
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "e0148f5a-8ab5-4a61-a0f8-54e1b14665b7",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.6,
+      "humidity": 60.867089327962844,
+      "timestamp": 1780938121149,
+      "location": {
+        "latitude": 31.2044,
+        "longitude": 121.33250000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "c75b3a01-209d-43b0-9429-71a1cdef79d8",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.3,
+      "humidity": 63.646356600500546,
+      "timestamp": 1780938181149,
+      "location": {
+        "latitude": 31.2049,
+        "longitude": 121.3331
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "4b4081dd-ce9c-4def-a194-9f4800693211",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.8,
+      "humidity": 61.2304783817682,
+      "timestamp": 1780938241149,
+      "location": {
+        "latitude": 31.205399999999997,
+        "longitude": 121.33370000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "bcdd5fe7-8439-4067-a708-7703b1083ef6",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.2,
+      "humidity": 60.7993782568768,
+      "timestamp": 1780938301149,
+      "location": {
+        "latitude": 31.2059,
+        "longitude": 121.33430000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "3bbef060-8f6f-4170-9296-6172f856494e",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.8,
+      "humidity": 62.67383959167913,
+      "timestamp": 1780938361149,
+      "location": {
+        "latitude": 31.2064,
+        "longitude": 121.3349
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "2833b87b-89cf-46e1-a3df-54f3f4834df1",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 6,
+      "humidity": 60.078853760511116,
+      "timestamp": 1780938421149,
+      "location": {
+        "latitude": 31.206899999999997,
+        "longitude": 121.33550000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "e7df279e-15e0-4388-94d6-6837a34630b4",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.1,
+      "humidity": 69.26262195232991,
+      "timestamp": 1780938481149,
+      "location": {
+        "latitude": 31.2074,
+        "longitude": 121.3361
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "393334f8-68eb-49d9-b1a5-6f852bf776ff",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.6,
+      "humidity": 65.95241501301217,
+      "timestamp": 1780938541149,
+      "location": {
+        "latitude": 31.2079,
+        "longitude": 121.33670000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "1205eb5d-0672-47a9-9390-4979cc4429a7",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.8,
+      "humidity": 68.13353089476811,
+      "timestamp": 1780938601149,
+      "location": {
+        "latitude": 31.208399999999997,
+        "longitude": 121.33730000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "b64e9937-400b-4ddc-a350-a616e9d897aa",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.4,
+      "humidity": 63.15453091925591,
+      "timestamp": 1780938661149,
+      "location": {
+        "latitude": 31.2089,
+        "longitude": 121.3379
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "1d5e27f2-7133-49c1-b51c-b0c9d0069abb",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.9,
+      "humidity": 61.342334790108104,
+      "timestamp": 1780938721149,
+      "location": {
+        "latitude": 31.2094,
+        "longitude": 121.33850000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "cacab70f-09cb-4bb7-aeec-14a63ada69d5",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.6,
+      "humidity": 67.87748201044316,
+      "timestamp": 1780938781149,
+      "location": {
+        "latitude": 31.209899999999998,
+        "longitude": 121.3391
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "d8de69ef-8328-40f6-93ff-5f0042584fc7",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.6,
+      "humidity": 68.71010696116672,
+      "timestamp": 1780938841149,
+      "location": {
+        "latitude": 31.2104,
+        "longitude": 121.33970000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "c7815c67-a7a1-4ebf-b6e7-00142c05613e",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.5,
+      "humidity": 63.308115040188525,
+      "timestamp": 1780938901149,
+      "location": {
+        "latitude": 31.2109,
+        "longitude": 121.34030000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "66784ca2-444b-42c4-9c46-be9afcc79a30",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.8,
+      "humidity": 64.10943180322899,
+      "timestamp": 1780938961149,
+      "location": {
+        "latitude": 31.211399999999998,
+        "longitude": 121.3409
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "d6371dc1-991f-4d81-8f05-b3f53aa1b390",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.6,
+      "humidity": 67.67755780624276,
+      "timestamp": 1780939021149,
+      "location": {
+        "latitude": 31.2119,
+        "longitude": 121.34150000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "b84fc9e3-cf1e-44fd-93cd-deb2331b192c",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.8,
+      "humidity": 67.91191419748674,
+      "timestamp": 1780939081149,
+      "location": {
+        "latitude": 31.2124,
+        "longitude": 121.3421
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "ac2afbfd-f3eb-463f-9390-cf13935d1201",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.7,
+      "humidity": 66.58794130683702,
+      "timestamp": 1780939141149,
+      "location": {
+        "latitude": 31.212899999999998,
+        "longitude": 121.34270000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "a24aa9c7-dfc7-48a2-90cd-be141152ef2d",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.4,
+      "humidity": 68.23048019866043,
+      "timestamp": 1780939201149,
+      "location": {
+        "latitude": 31.2134,
+        "longitude": 121.3433
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "78c5d04c-d690-405e-8e2b-e88e0d6a85d7",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.1,
+      "humidity": 64.66728509604503,
+      "timestamp": 1780939261149,
+      "location": {
+        "latitude": 31.2139,
+        "longitude": 121.3439
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "1392fea3-7732-4703-a523-42fe5e10a546",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.7,
+      "humidity": 68.52616938493013,
+      "timestamp": 1780939321149,
+      "location": {
+        "latitude": 31.214399999999998,
+        "longitude": 121.34450000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "3ea24914-b857-4283-827d-3c187812c90e",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.5,
+      "humidity": 68.5733746407925,
+      "timestamp": 1780939381149,
+      "location": {
+        "latitude": 31.2149,
+        "longitude": 121.3451
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "7ec80158-768e-4f51-b7a4-75c432a47c87",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.8,
+      "humidity": 69.98055877077722,
+      "timestamp": 1780939441149,
+      "location": {
+        "latitude": 31.2154,
+        "longitude": 121.34570000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "2ca0dc44-4876-4bda-a4ea-d4cfd1cc3e89",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.7,
+      "humidity": 64.3184738522244,
+      "timestamp": 1780939501149,
+      "location": {
+        "latitude": 31.215899999999998,
+        "longitude": 121.3463
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "c3a0492c-fcbd-4994-b802-c9f3fae7cf1b",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.9,
+      "humidity": 64.60615770958084,
+      "timestamp": 1780939561149,
+      "location": {
+        "latitude": 31.2164,
+        "longitude": 121.3469
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "75a692b0-6b96-405a-9192-40e1fa3b0e30",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.2,
+      "humidity": 63.07890867182687,
+      "timestamp": 1780939621149,
+      "location": {
+        "latitude": 31.2169,
+        "longitude": 121.34750000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "b93a0dc0-e1d2-4641-b6c4-ade14dcfe551",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.6,
+      "humidity": 60.57127416630603,
+      "timestamp": 1780939681149,
+      "location": {
+        "latitude": 31.217399999999998,
+        "longitude": 121.3481
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "2356b77f-6c45-4d30-b0ac-a08bfe2b2885",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.7,
+      "humidity": 61.08844738387082,
+      "timestamp": 1780939741149,
+      "location": {
+        "latitude": 31.2179,
+        "longitude": 121.34870000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "a45aa870-dbe0-459b-ae92-d5e69141a655",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 6,
+      "humidity": 65.01012769131377,
+      "timestamp": 1780939801149,
+      "location": {
+        "latitude": 31.2184,
+        "longitude": 121.3493
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "5be80b9a-3148-4339-8fdb-60f461f5f526",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.2,
+      "humidity": 60.20693568442375,
+      "timestamp": 1780939861149,
+      "location": {
+        "latitude": 31.218899999999998,
+        "longitude": 121.3499
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "b873b032-23c5-4032-a25a-284ca9a560da",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.5,
+      "humidity": 63.581821443025994,
+      "timestamp": 1780939921149,
+      "location": {
+        "latitude": 31.2194,
+        "longitude": 121.35050000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "78b8e023-9ade-4f79-8304-4010cd8742f3",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.6,
+      "humidity": 61.87490408411121,
+      "timestamp": 1780939981149,
+      "location": {
+        "latitude": 31.2199,
+        "longitude": 121.3511
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "48d14502-67ce-4cb1-b066-20dae5dc81d5",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.7,
+      "humidity": 66.07612305761621,
+      "timestamp": 1780940041149,
+      "location": {
+        "latitude": 31.220399999999998,
+        "longitude": 121.35170000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "0b3a7ce1-a4be-4e52-a85e-fd054f7f8592",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.8,
+      "humidity": 69.34405865129315,
+      "timestamp": 1780940101149,
+      "location": {
+        "latitude": 31.2209,
+        "longitude": 121.3523
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "9a2f810a-c2a9-4e7f-abf2-a660fc77ed4a",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 6,
+      "humidity": 67.30172973379244,
+      "timestamp": 1780940161149,
+      "location": {
+        "latitude": 31.2214,
+        "longitude": 121.3529
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "5d90086a-8bc4-4a26-987b-5f3e643802f5",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.1,
+      "humidity": 60.75054039866054,
+      "timestamp": 1780940221149,
+      "location": {
+        "latitude": 31.221899999999998,
+        "longitude": 121.35350000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "87532ad8-3907-4210-929c-219c0b821015",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.7,
+      "humidity": 63.53901401449369,
+      "timestamp": 1780940281149,
+      "location": {
+        "latitude": 31.2224,
+        "longitude": 121.3541
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "6c44de40-645c-4946-8238-bca495808cbf",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.3,
+      "humidity": 62.2604419648629,
+      "timestamp": 1780940341149,
+      "location": {
+        "latitude": 31.2229,
+        "longitude": 121.35470000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "1e2da4ff-e8fb-44b1-9fac-5ab4d4be4912",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.3,
+      "humidity": 63.742534768394236,
+      "timestamp": 1780940401149,
+      "location": {
+        "latitude": 31.223399999999998,
+        "longitude": 121.3553
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "c2e2b243-0018-48b9-aaec-b5acd23c2464",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.4,
+      "humidity": 61.75929528308968,
+      "timestamp": 1780940461149,
+      "location": {
+        "latitude": 31.2239,
+        "longitude": 121.3559
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "7137d3f9-064c-4441-aab5-d68468afa016",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.1,
+      "humidity": 66.21355651920639,
+      "timestamp": 1780940521149,
+      "location": {
+        "latitude": 31.2244,
+        "longitude": 121.35650000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "99878ce4-138d-4862-93c6-e33ce13d76b2",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.3,
+      "humidity": 69.26080377963468,
+      "timestamp": 1780940581149,
+      "location": {
+        "latitude": 31.224899999999998,
+        "longitude": 121.3571
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "9f6749e2-f750-40ae-89e1-5dc1099d9948",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.9,
+      "humidity": 67.45855874027309,
+      "timestamp": 1780940641149,
+      "location": {
+        "latitude": 31.2254,
+        "longitude": 121.35770000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "95c50341-a593-45ad-b69d-76b499fc7bd5",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.9,
+      "humidity": 66.87198583137592,
+      "timestamp": 1780940701149,
+      "location": {
+        "latitude": 31.2259,
+        "longitude": 121.3583
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "39a958ab-23bb-48e2-b4c6-362c3663d6d8",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4,
+      "humidity": 66.22376372450587,
+      "timestamp": 1780940761149,
+      "location": {
+        "latitude": 31.226399999999998,
+        "longitude": 121.3589
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "118cc05e-8d1e-424b-adfe-fe6c32ac0930",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4,
+      "humidity": 60.98581029239934,
+      "timestamp": 1780940821149,
+      "location": {
+        "latitude": 31.2269,
+        "longitude": 121.35950000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "562630a8-dd12-4fc1-aba9-4a7e2838aaf7",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.3,
+      "humidity": 64.295561338878,
+      "timestamp": 1780940881149,
+      "location": {
+        "latitude": 31.2274,
+        "longitude": 121.3601
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "bde7932e-1b30-49ce-96ef-3ed30abb05a0",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.8,
+      "humidity": 62.097924032389834,
+      "timestamp": 1780940941149,
+      "location": {
+        "latitude": 31.227899999999998,
+        "longitude": 121.36070000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "a48b8735-6755-4794-ad31-b995458677d2",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.1,
+      "humidity": 65.00471980358635,
+      "timestamp": 1780941001149,
+      "location": {
+        "latitude": 31.228399999999997,
+        "longitude": 121.3613
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "70ebf2c3-b67c-4c73-83df-9d5852a4939e",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.8,
+      "humidity": 68.23919623940179,
+      "timestamp": 1780941061149,
+      "location": {
+        "latitude": 31.2289,
+        "longitude": 121.3619
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "10309563-4be8-4e63-868f-fbf720aafdd9",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.8,
+      "humidity": 61.70313231906245,
+      "timestamp": 1780941121149,
+      "location": {
+        "latitude": 31.2294,
+        "longitude": 121.36250000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "f70c2a4f-7e33-4c0d-8e4c-d0d1041d805d",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.5,
+      "humidity": 62.84668853800701,
+      "timestamp": 1780941181149,
+      "location": {
+        "latitude": 31.229899999999997,
+        "longitude": 121.3631
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "7858c4ee-3f7d-44ac-83cf-cc30d29117c6",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.9,
+      "humidity": 65.2786788070598,
+      "timestamp": 1780941241149,
+      "location": {
+        "latitude": 31.2304,
+        "longitude": 121.36370000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "d10178c5-5370-479c-84c9-9fc8896f7ada",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.8,
+      "humidity": 65.23796539980906,
+      "timestamp": 1780941301149,
+      "location": {
+        "latitude": 31.2309,
+        "longitude": 121.3643
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "2a6dd51e-055d-4f16-80ce-0fb31a52c689",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.5,
+      "humidity": 67.13503309763557,
+      "timestamp": 1780941361149,
+      "location": {
+        "latitude": 31.231399999999997,
+        "longitude": 121.3649
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "7e0b7847-c1c8-45d4-8b80-45fc6968781b",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.2,
+      "humidity": 67.89673445621243,
+      "timestamp": 1780941421149,
+      "location": {
+        "latitude": 31.2319,
+        "longitude": 121.36550000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "66d5939a-382d-40cc-836e-5d85c81e88a0",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.7,
+      "humidity": 65.14248337016329,
+      "timestamp": 1780941481149,
+      "location": {
+        "latitude": 31.2324,
+        "longitude": 121.3661
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "1a46bb70-f643-40e7-8ccb-1caf95e2cbd0",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 6,
+      "humidity": 63.554832904036594,
+      "timestamp": 1780941541149,
+      "location": {
+        "latitude": 31.232899999999997,
+        "longitude": 121.36670000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "7e4cff57-7573-4c5a-8db9-4658e3bfd0c3",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.7,
+      "humidity": 63.36214497710118,
+      "timestamp": 1780941601149,
+      "location": {
+        "latitude": 31.2334,
+        "longitude": 121.3673
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "a110247e-37d8-42b1-9b3f-13d94f05becd",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.6,
+      "humidity": 68.84382073540563,
+      "timestamp": 1780941661149,
+      "location": {
+        "latitude": 31.2339,
+        "longitude": 121.3679
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "8a528a3b-7945-4443-944b-ceb813b038e8",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.5,
+      "humidity": 61.07504866819587,
+      "timestamp": 1780941721149,
+      "location": {
+        "latitude": 31.234399999999997,
+        "longitude": 121.36850000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "21e53848-6cd0-42e2-9de6-32d08e7e7598",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.6,
+      "humidity": 63.9619787532781,
+      "timestamp": 1780941781149,
+      "location": {
+        "latitude": 31.2349,
+        "longitude": 121.3691
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "56119fa9-5670-49b9-a9c1-b11fb0f97766",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.2,
+      "humidity": 66.3229800982361,
+      "timestamp": 1780941841149,
+      "location": {
+        "latitude": 31.2354,
+        "longitude": 121.36970000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "d7d26789-c862-4b4d-a584-5dae4622faa7",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.9,
+      "humidity": 62.22357311186775,
+      "timestamp": 1780941901149,
+      "location": {
+        "latitude": 31.235899999999997,
+        "longitude": 121.3703
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "6ad7094a-ddab-4e1d-8a34-b907d82f7ca9",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.5,
+      "humidity": 66.40539702847366,
+      "timestamp": 1780941961149,
+      "location": {
+        "latitude": 31.2364,
+        "longitude": 121.3709
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "500beae0-ecb3-4ef8-9f24-5a9e7dfe9712",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5,
+      "humidity": 63.38015205274294,
+      "timestamp": 1780942021149,
+      "location": {
+        "latitude": 31.2369,
+        "longitude": 121.37150000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "1736a5f9-0f35-4fe7-ab59-ffa257d7ed23",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.5,
+      "humidity": 61.470840338337766,
+      "timestamp": 1780942081149,
+      "location": {
+        "latitude": 31.237399999999997,
+        "longitude": 121.3721
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "0c51b6e9-387d-492f-9386-0cd161efaf52",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.9,
+      "humidity": 60.531720740749876,
+      "timestamp": 1780942141149,
+      "location": {
+        "latitude": 31.2379,
+        "longitude": 121.37270000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "65085161-024f-49df-abdf-4486928e312f",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4.9,
+      "humidity": 63.25303074069555,
+      "timestamp": 1780942201149,
+      "location": {
+        "latitude": 31.2384,
+        "longitude": 121.3733
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "e82ee138-8661-4b47-a810-0e00f7dae724",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 4,
+      "humidity": 68.44514031653475,
+      "timestamp": 1780942261149,
+      "location": {
+        "latitude": 31.238899999999997,
+        "longitude": 121.3739
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "6997695c-f744-4343-8ec3-be08d4db45f6",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.4,
+      "humidity": 63.43537656479257,
+      "timestamp": 1780942321149,
+      "location": {
+        "latitude": 31.2394,
+        "longitude": 121.37450000000001
+      },
+      "deviceStatus": "normal"
+    },
+    {
+      "id": "b7c77b85-1172-40f3-9207-8401e90c4d27",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "zoneId": "3c74edd0-9c28-4158-a46c-6ec50d5adf3d",
+      "temperature": 5.2,
+      "humidity": 66.1528205431587,
+      "timestamp": 1780942381149,
+      "location": {
+        "latitude": 31.2399,
+        "longitude": 121.3751
+      },
+      "deviceStatus": "normal"
+    }
+  ],
+  "doorEvents": [],
+  "alerts": [],
+  "trackPoints": [
+    {
+      "id": "711d30ca-4ae4-48e9-b984-0790280d32e8",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2304,
+      "longitude": 121.4737,
+      "speed": 0,
+      "timestamp": 1780946041149
+    },
+    {
+      "id": "2a9b2ff1-0f9b-4a5b-bafc-51615db1e53e",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2314,
+      "longitude": 121.47449999999999,
+      "speed": 40.12740231327551,
+      "timestamp": 1780946101149
+    },
+    {
+      "id": "04be7af9-90c4-46c9-8e1f-087b584de3a0",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2324,
+      "longitude": 121.47529999999999,
+      "speed": 50.883439758356594,
+      "timestamp": 1780946161149
+    },
+    {
+      "id": "c32e0134-c848-4b72-bf0f-d74caa01f772",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2334,
+      "longitude": 121.47609999999999,
+      "speed": 58.60585797061156,
+      "timestamp": 1780946221149
+    },
+    {
+      "id": "7b38022d-6e28-4996-90a2-8cd5af3a3a1e",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2344,
+      "longitude": 121.4769,
+      "speed": 56.10826248467432,
+      "timestamp": 1780946281149
+    },
+    {
+      "id": "5522721c-a5da-43f2-a53d-d96ec25f8e4c",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2354,
+      "longitude": 121.4777,
+      "speed": 49.17031154126668,
+      "timestamp": 1780946341149
+    },
+    {
+      "id": "4db79a1d-44e1-4206-a7bb-e047e8e3a13f",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2364,
+      "longitude": 121.4785,
+      "speed": 41.07297237554644,
+      "timestamp": 1780946401149
+    },
+    {
+      "id": "e7c01d48-5275-480f-8ea7-3aaef896d244",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2374,
+      "longitude": 121.4793,
+      "speed": 54.70759777013098,
+      "timestamp": 1780946461149
+    },
+    {
+      "id": "3abeaca3-56c5-4f09-b284-dea56382dd54",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2384,
+      "longitude": 121.4801,
+      "speed": 45.97675973882685,
+      "timestamp": 1780946521149
+    },
+    {
+      "id": "e6699657-ce5f-40e0-84e0-46c0d348978c",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2394,
+      "longitude": 121.48089999999999,
+      "speed": 55.73984667154522,
+      "timestamp": 1780946581149
+    },
+    {
+      "id": "d860fdd6-038d-4df6-9db8-893ffc00449e",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2404,
+      "longitude": 121.48169999999999,
+      "speed": 0,
+      "timestamp": 1780946641149
+    },
+    {
+      "id": "008c35bb-5595-45de-a4ee-aa1c0b7dedb3",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2414,
+      "longitude": 121.48249999999999,
+      "speed": 45.92899831163693,
+      "timestamp": 1780946701149
+    },
+    {
+      "id": "c2cb6124-5bf4-438a-9bd8-b17134ec8ad7",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2424,
+      "longitude": 121.4833,
+      "speed": 42.84301814216276,
+      "timestamp": 1780946761149
+    },
+    {
+      "id": "99bcbb09-b331-4c59-ae0d-28df11322743",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2434,
+      "longitude": 121.4841,
+      "speed": 59.012726710700875,
+      "timestamp": 1780946821149
+    },
+    {
+      "id": "a0005251-15d7-4b6d-ba1e-ec8733e3d7f3",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2444,
+      "longitude": 121.4849,
+      "speed": 48.62195533253068,
+      "timestamp": 1780946881149
+    },
+    {
+      "id": "188509ae-f808-4fe2-8ddd-4e8b0c3b8d02",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2454,
+      "longitude": 121.4857,
+      "speed": 56.94865339754759,
+      "timestamp": 1780946941149
+    },
+    {
+      "id": "24e9e02e-141d-4a52-b781-dfcb71a23177",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.246399999999998,
+      "longitude": 121.48649999999999,
+      "speed": 51.340029459713804,
+      "timestamp": 1780947001149
+    },
+    {
+      "id": "098a2d4d-0d1a-4b88-a384-4325f53a805b",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2474,
+      "longitude": 121.48729999999999,
+      "speed": 40.41583706607847,
+      "timestamp": 1780947061149
+    },
+    {
+      "id": "35cee0bd-8e6e-49c4-ae1d-602c7e7298b0",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2484,
+      "longitude": 121.48809999999999,
+      "speed": 58.46003370901636,
+      "timestamp": 1780947121149
+    },
+    {
+      "id": "dd6e6b28-25dd-425e-b139-87ef4ce0fbf3",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.249399999999998,
+      "longitude": 121.48889999999999,
+      "speed": 41.248778026643954,
+      "timestamp": 1780947181149
+    },
+    {
+      "id": "e16d1c3e-0f78-4a24-a830-1e7b7d50de06",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2504,
+      "longitude": 121.4897,
+      "speed": 0,
+      "timestamp": 1780947241149
+    },
+    {
+      "id": "976edeeb-640a-4e97-868f-dbd2d98d6c1c",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2514,
+      "longitude": 121.4905,
+      "speed": 45.12781311841019,
+      "timestamp": 1780947301149
+    },
+    {
+      "id": "6e235204-c10f-432e-b1dc-b15893b821b6",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.252399999999998,
+      "longitude": 121.4913,
+      "speed": 53.4088860974101,
+      "timestamp": 1780947361149
+    },
+    {
+      "id": "84c32835-e3d9-4874-8712-6236ff7d6d0d",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2534,
+      "longitude": 121.4921,
+      "speed": 50.13824764849048,
+      "timestamp": 1780947421149
+    },
+    {
+      "id": "49787330-f83f-473e-9a90-05d74186bc24",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2544,
+      "longitude": 121.49289999999999,
+      "speed": 55.53090922537949,
+      "timestamp": 1780947481149
+    },
+    {
+      "id": "557577fd-8fd1-4b33-9aaf-ca7e9bce0291",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.255399999999998,
+      "longitude": 121.49369999999999,
+      "speed": 55.678031111316685,
+      "timestamp": 1780947541149
+    },
+    {
+      "id": "8bb3ee77-fecb-42b4-a3d5-ebc2c5763633",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2564,
+      "longitude": 121.49449999999999,
+      "speed": 48.682907593565304,
+      "timestamp": 1780947601149
+    },
+    {
+      "id": "b9142817-7ee8-43ac-a0bc-1a0339799547",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2574,
+      "longitude": 121.4953,
+      "speed": 41.336685078668545,
+      "timestamp": 1780947661149
+    },
+    {
+      "id": "c8269f32-c50b-465c-98f2-194eb0ba859c",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.258399999999998,
+      "longitude": 121.4961,
+      "speed": 50.807749421940414,
+      "timestamp": 1780947721149
+    },
+    {
+      "id": "282ac115-c6f8-486e-9133-c7cba8274336",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2594,
+      "longitude": 121.4969,
+      "speed": 40.603312830770825,
+      "timestamp": 1780947781149
+    },
+    {
+      "id": "c7b336df-0bdb-4e08-9e72-7006d3f16da8",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2604,
+      "longitude": 121.4977,
+      "speed": 0,
+      "timestamp": 1780947841149
+    },
+    {
+      "id": "1d5429e1-fc59-408f-bd84-aa8dc12b21a2",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2614,
+      "longitude": 121.49849999999999,
+      "speed": 46.940949428799655,
+      "timestamp": 1780947901149
+    },
+    {
+      "id": "e19323a7-9bb1-40df-95d9-9978498b2541",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2624,
+      "longitude": 121.49929999999999,
+      "speed": 48.487892929811146,
+      "timestamp": 1780947961149
+    },
+    {
+      "id": "77224d9a-d472-43da-a78f-69d74c0fc25c",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2634,
+      "longitude": 121.50009999999999,
+      "speed": 47.241719147064956,
+      "timestamp": 1780948021149
+    },
+    {
+      "id": "ec1f55a9-c7af-438a-aaba-f4fe9c5a4154",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2644,
+      "longitude": 121.50089999999999,
+      "speed": 52.992181653674656,
+      "timestamp": 1780948081149
+    },
+    {
+      "id": "b9f9a029-82a7-4a2b-b685-11af289486e2",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2654,
+      "longitude": 121.5017,
+      "speed": 52.00242095135944,
+      "timestamp": 1780948141149
+    },
+    {
+      "id": "c1bd97e6-4386-4563-a99a-e9f2dfb4cd35",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2664,
+      "longitude": 121.5025,
+      "speed": 54.54580598279851,
+      "timestamp": 1780948201149
+    },
+    {
+      "id": "736c2971-abe8-479f-9320-14eec25ceda6",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2674,
+      "longitude": 121.5033,
+      "speed": 53.51488628514475,
+      "timestamp": 1780948261149
+    },
+    {
+      "id": "19e3b924-97b3-46d7-aebe-50e5a27bda28",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2684,
+      "longitude": 121.5041,
+      "speed": 55.607738719894954,
+      "timestamp": 1780948321149
+    },
+    {
+      "id": "9ba299fa-bfa5-445a-aca3-7936541ff264",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2694,
+      "longitude": 121.50489999999999,
+      "speed": 47.459324945060935,
+      "timestamp": 1780948381149
+    },
+    {
+      "id": "c8e50742-c1f6-4368-a6a9-94c348f00423",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2704,
+      "longitude": 121.50569999999999,
+      "speed": 0,
+      "timestamp": 1780948441149
+    },
+    {
+      "id": "88c566cb-e52f-4aaa-b692-406b519191bd",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2714,
+      "longitude": 121.50649999999999,
+      "speed": 52.08796434742254,
+      "timestamp": 1780948501149
+    },
+    {
+      "id": "c98619d6-5a09-4554-8bcd-8a832c93fb50",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2724,
+      "longitude": 121.5073,
+      "speed": 41.75689109362108,
+      "timestamp": 1780948561149
+    },
+    {
+      "id": "48c525ff-895b-4445-8b8f-ed41b2cdd05e",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2734,
+      "longitude": 121.5081,
+      "speed": 40.39379282252938,
+      "timestamp": 1780948621149
+    },
+    {
+      "id": "8ee6ba6d-e97a-4b63-aa67-7f7f4e16b505",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2744,
+      "longitude": 121.5089,
+      "speed": 47.581863376908906,
+      "timestamp": 1780948681149
+    },
+    {
+      "id": "b42f30f8-6136-482a-8232-f25d71d36c8a",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2754,
+      "longitude": 121.5097,
+      "speed": 51.00377677155904,
+      "timestamp": 1780948741149
+    },
+    {
+      "id": "c29d2f67-bace-4630-a53d-b2afc4f2df88",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2764,
+      "longitude": 121.5105,
+      "speed": 49.97306239112933,
+      "timestamp": 1780948801149
+    },
+    {
+      "id": "bbf8bda0-b9dc-46cc-bac5-2c2e2f008fe8",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2774,
+      "longitude": 121.51129999999999,
+      "speed": 46.57907648835702,
+      "timestamp": 1780948861149
+    },
+    {
+      "id": "ddff7275-2717-4dff-adb1-aa8dd0ac98bd",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.278399999999998,
+      "longitude": 121.51209999999999,
+      "speed": 53.62706527085098,
+      "timestamp": 1780948921149
+    },
+    {
+      "id": "2eed9dc4-4361-4f2d-afd1-1ab838a26b57",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2794,
+      "longitude": 121.51289999999999,
+      "speed": 44.86078498541919,
+      "timestamp": 1780948981149
+    },
+    {
+      "id": "4aaed377-3eb3-4b3f-8b24-b7a75384a141",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2804,
+      "longitude": 121.5137,
+      "speed": 0,
+      "timestamp": 1780949041149
+    },
+    {
+      "id": "a9446b6b-31f5-4f18-a51f-333f11c33aea",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.281399999999998,
+      "longitude": 121.5145,
+      "speed": 47.394940893179985,
+      "timestamp": 1780949101149
+    },
+    {
+      "id": "f225ebe3-ea40-4c70-b537-cdab34a883fb",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2824,
+      "longitude": 121.5153,
+      "speed": 45.140157698652146,
+      "timestamp": 1780949161149
+    },
+    {
+      "id": "9ce16493-7eae-4c3e-afb5-6123c62ff03e",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2834,
+      "longitude": 121.5161,
+      "speed": 44.60057602523082,
+      "timestamp": 1780949221149
+    },
+    {
+      "id": "cd7b5c14-91f0-4391-b40d-a76db98edfa4",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.284399999999998,
+      "longitude": 121.51689999999999,
+      "speed": 46.66967816953065,
+      "timestamp": 1780949281149
+    },
+    {
+      "id": "601660de-d203-487c-b2b4-9756008e5fc7",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2854,
+      "longitude": 121.51769999999999,
+      "speed": 40.824138111185185,
+      "timestamp": 1780949341149
+    },
+    {
+      "id": "7ebceaf9-6fa2-4268-89ef-29ef57eaca0d",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2864,
+      "longitude": 121.51849999999999,
+      "speed": 42.2685263544139,
+      "timestamp": 1780949401149
+    },
+    {
+      "id": "bde2e525-e483-4bfe-8c50-205dee25893b",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.287399999999998,
+      "longitude": 121.51929999999999,
+      "speed": 56.67605413527128,
+      "timestamp": 1780949461149
+    },
+    {
+      "id": "e95e808d-6441-4317-9ebf-dca8f059ea8a",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2884,
+      "longitude": 121.5201,
+      "speed": 56.21875763678574,
+      "timestamp": 1780949521149
+    },
+    {
+      "id": "1006e23f-ce97-4d44-8be5-4f75b88d9183",
+      "waybillId": "9e2f3dcf-5f39-4e5b-a84c-e0c5495409b9",
+      "vehicleId": "09ff02fe-380a-41d1-a7d9-adf154973563",
+      "latitude": 31.2894,
+      "longitude": 121.5209,
+      "speed": 52.06979874034221,
+      "timestamp": 1780949581149
+    },
+    {
+      "id": "c386b6ac-b098-465a-b81f-fa90efdd7cb3",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.1804,
+      "longitude": 121.3037,
+      "speed": 44.262339516058276,
+      "timestamp": 1780935241149
+    },
+    {
+      "id": "fda1a901-ec99-4cf1-8d94-e92790f09feb",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.180899999999998,
+      "longitude": 121.30430000000001,
+      "speed": 53.472073659041975,
+      "timestamp": 1780935301149
+    },
+    {
+      "id": "ed98bd9d-5238-4e8c-b0e0-454cd059510c",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.1814,
+      "longitude": 121.3049,
+      "speed": 40.525393670465114,
+      "timestamp": 1780935361149
+    },
+    {
+      "id": "067432f8-b85d-4951-904f-12fd95ef1f4f",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.1819,
+      "longitude": 121.30550000000001,
+      "speed": 44.70459862538881,
+      "timestamp": 1780935421149
+    },
+    {
+      "id": "03da675f-2be6-46a5-a664-e2e5e5d9264a",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.182399999999998,
+      "longitude": 121.3061,
+      "speed": 48.60472772446335,
+      "timestamp": 1780935481149
+    },
+    {
+      "id": "8a41c401-05e9-4bb6-b156-0697adf5a7b6",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.1829,
+      "longitude": 121.3067,
+      "speed": 35.672347671982514,
+      "timestamp": 1780935541149
+    },
+    {
+      "id": "3cb38b02-b594-4210-9c01-757332c251a9",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.1834,
+      "longitude": 121.30730000000001,
+      "speed": 53.62024391094607,
+      "timestamp": 1780935601149
+    },
+    {
+      "id": "0c15e16e-52a4-4286-bfa1-e58a018ee797",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.183899999999998,
+      "longitude": 121.3079,
+      "speed": 53.319486208402395,
+      "timestamp": 1780935661149
+    },
+    {
+      "id": "c3830fdf-b943-46dd-a394-2f292448dd4d",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.1844,
+      "longitude": 121.30850000000001,
+      "speed": 47.87032073392336,
+      "timestamp": 1780935721149
+    },
+    {
+      "id": "96b9df66-f6de-41c2-8b15-aa63b567cd5f",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.1849,
+      "longitude": 121.3091,
+      "speed": 38.43325693436703,
+      "timestamp": 1780935781149
+    },
+    {
+      "id": "ce45d3b1-375a-405b-9dea-dbfaf92c6325",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.185399999999998,
+      "longitude": 121.3097,
+      "speed": 50.90543462511493,
+      "timestamp": 1780935841149
+    },
+    {
+      "id": "da4348c6-30e4-4605-a255-6111a072f02d",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.1859,
+      "longitude": 121.31030000000001,
+      "speed": 57.34436476438633,
+      "timestamp": 1780935901149
+    },
+    {
+      "id": "c34d6e46-1cf2-43c9-b19a-b8a1d7b8a4eb",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.1864,
+      "longitude": 121.3109,
+      "speed": 51.12080359150576,
+      "timestamp": 1780935961149
+    },
+    {
+      "id": "0a30f0cf-fc7e-45a5-ad51-d5d131877131",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.186899999999998,
+      "longitude": 121.31150000000001,
+      "speed": 36.60296182954708,
+      "timestamp": 1780936021149
+    },
+    {
+      "id": "694595f6-f012-4b71-8456-4b41a3ab246b",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.1874,
+      "longitude": 121.3121,
+      "speed": 41.74650603657713,
+      "timestamp": 1780936081149
+    },
+    {
+      "id": "e5cfd8f3-4f0c-4e11-8cb5-2c94b8d0bde0",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.1879,
+      "longitude": 121.3127,
+      "speed": 40.17660526180571,
+      "timestamp": 1780936141149
+    },
+    {
+      "id": "0e01d41a-0eea-44d2-968d-749b294835a4",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.188399999999998,
+      "longitude": 121.31330000000001,
+      "speed": 46.39918089748034,
+      "timestamp": 1780936201149
+    },
+    {
+      "id": "927260b3-f71a-4dcd-b447-dde6f6124c8b",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.1889,
+      "longitude": 121.3139,
+      "speed": 35.23229336390474,
+      "timestamp": 1780936261149
+    },
+    {
+      "id": "a765c28a-b6af-4f76-92be-db4c1279bb48",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.1894,
+      "longitude": 121.31450000000001,
+      "speed": 39.30098593864908,
+      "timestamp": 1780936321149
+    },
+    {
+      "id": "77f0b6df-c4dd-43b7-911d-1b14b2e845ed",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.189899999999998,
+      "longitude": 121.3151,
+      "speed": 46.56029191912062,
+      "timestamp": 1780936381149
+    },
+    {
+      "id": "82c03d97-0e20-470c-bce0-35fba81bac16",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.1904,
+      "longitude": 121.3157,
+      "speed": 37.14316864431288,
+      "timestamp": 1780936441149
+    },
+    {
+      "id": "d78fd6ac-9db5-43eb-9bfc-14aec94649a8",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.1909,
+      "longitude": 121.31630000000001,
+      "speed": 42.048637751773455,
+      "timestamp": 1780936501149
+    },
+    {
+      "id": "961dacc6-c318-4386-87a8-2305f529c65f",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.191399999999998,
+      "longitude": 121.3169,
+      "speed": 59.82311446841658,
+      "timestamp": 1780936561149
+    },
+    {
+      "id": "298c498b-2d1a-47ad-a9b4-d143b797574a",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.1919,
+      "longitude": 121.31750000000001,
+      "speed": 56.75571922672971,
+      "timestamp": 1780936621149
+    },
+    {
+      "id": "ac894141-c4fe-4bbf-bacd-c6f190948500",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.1924,
+      "longitude": 121.3181,
+      "speed": 51.446981713713875,
+      "timestamp": 1780936681149
+    },
+    {
+      "id": "4e3962d0-8eb5-482a-969a-cfe867f099b1",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.192899999999998,
+      "longitude": 121.3187,
+      "speed": 39.802419649910846,
+      "timestamp": 1780936741149
+    },
+    {
+      "id": "cda690ff-531c-43e6-b86e-87d4da180697",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.1934,
+      "longitude": 121.31930000000001,
+      "speed": 54.75877242407995,
+      "timestamp": 1780936801149
+    },
+    {
+      "id": "65556cc0-449b-4ca1-848a-113bef5c1204",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.1939,
+      "longitude": 121.3199,
+      "speed": 44.29083077179694,
+      "timestamp": 1780936861149
+    },
+    {
+      "id": "c7d617de-cedf-4753-a03e-5d85e0e53678",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.194399999999998,
+      "longitude": 121.32050000000001,
+      "speed": 41.451584828623005,
+      "timestamp": 1780936921149
+    },
+    {
+      "id": "806dad41-db82-407d-b351-43cbba62d70f",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.1949,
+      "longitude": 121.3211,
+      "speed": 59.12210972102882,
+      "timestamp": 1780936981149
+    },
+    {
+      "id": "ffbf82d2-dddf-4efb-9d93-9012c29b3b02",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.1954,
+      "longitude": 121.3217,
+      "speed": 41.904673053539426,
+      "timestamp": 1780937041149
+    },
+    {
+      "id": "c8177a16-c439-4586-8454-b36f66566442",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.195899999999998,
+      "longitude": 121.32230000000001,
+      "speed": 54.94554796757565,
+      "timestamp": 1780937101149
+    },
+    {
+      "id": "d39dbbc2-52ef-48e5-a3e5-7a55e77f07f8",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.196399999999997,
+      "longitude": 121.3229,
+      "speed": 46.01643603637089,
+      "timestamp": 1780937161149
+    },
+    {
+      "id": "57d71fc3-4837-476b-ae0b-978c2aafb8a2",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.1969,
+      "longitude": 121.32350000000001,
+      "speed": 58.58851756283606,
+      "timestamp": 1780937221149
+    },
+    {
+      "id": "6426953f-7cea-4fb1-b981-6ad4824c717d",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.1974,
+      "longitude": 121.3241,
+      "speed": 47.441755226689075,
+      "timestamp": 1780937281149
+    },
+    {
+      "id": "40344100-4e79-43a4-9641-83b3b7835bf1",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.197899999999997,
+      "longitude": 121.3247,
+      "speed": 37.15982654397451,
+      "timestamp": 1780937341149
+    },
+    {
+      "id": "4e1583b0-7ca1-4fc6-a4c1-91438b3b5321",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.1984,
+      "longitude": 121.32530000000001,
+      "speed": 59.98032716003625,
+      "timestamp": 1780937401149
+    },
+    {
+      "id": "820b121e-8b59-4054-b9c0-694b588618a3",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.1989,
+      "longitude": 121.3259,
+      "speed": 56.81492436655521,
+      "timestamp": 1780937461149
+    },
+    {
+      "id": "a1bd49e8-87b3-44b4-9821-0309907b0982",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.199399999999997,
+      "longitude": 121.32650000000001,
+      "speed": 44.11807297003568,
+      "timestamp": 1780937521149
+    },
+    {
+      "id": "57975508-811e-4a81-8cb6-a867210f5ca6",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.1999,
+      "longitude": 121.3271,
+      "speed": 39.187503868074415,
+      "timestamp": 1780937581149
+    },
+    {
+      "id": "446e6feb-4b7f-4aa5-bb4a-8fb83c407663",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2004,
+      "longitude": 121.32770000000001,
+      "speed": 59.26322606546623,
+      "timestamp": 1780937641149
+    },
+    {
+      "id": "55b1ddcc-03e2-41da-b327-2e3c2c841635",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.200899999999997,
+      "longitude": 121.32830000000001,
+      "speed": 35.47899774875821,
+      "timestamp": 1780937701149
+    },
+    {
+      "id": "965a33a9-e527-4cf7-8fb8-436fed52ddff",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2014,
+      "longitude": 121.3289,
+      "speed": 43.54522754928853,
+      "timestamp": 1780937761149
+    },
+    {
+      "id": "31ddf9d0-a696-40a9-89a7-239dc8cbc41f",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2019,
+      "longitude": 121.32950000000001,
+      "speed": 57.76562545472346,
+      "timestamp": 1780937821149
+    },
+    {
+      "id": "57c0b922-68e9-4c9a-809f-e953a41b2df0",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.202399999999997,
+      "longitude": 121.3301,
+      "speed": 57.82294675771101,
+      "timestamp": 1780937881149
+    },
+    {
+      "id": "22847744-9d2f-4538-8f38-5eee09614868",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2029,
+      "longitude": 121.33070000000001,
+      "speed": 54.372082346741585,
+      "timestamp": 1780937941149
+    },
+    {
+      "id": "d9bdade2-1673-4459-90dc-11a92b576128",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2034,
+      "longitude": 121.33130000000001,
+      "speed": 54.38780743785631,
+      "timestamp": 1780938001149
+    },
+    {
+      "id": "6cdc1d58-1a19-4d67-b437-96d14279e3ee",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.203899999999997,
+      "longitude": 121.3319,
+      "speed": 45.851228849311674,
+      "timestamp": 1780938061149
+    },
+    {
+      "id": "0c09b46d-20a5-4453-819e-daf2f2be02d0",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2044,
+      "longitude": 121.33250000000001,
+      "speed": 57.95100608942214,
+      "timestamp": 1780938121149
+    },
+    {
+      "id": "4b5a403d-c9d2-4cdc-9a3d-d4acf0ebf849",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2049,
+      "longitude": 121.3331,
+      "speed": 58.12544168264141,
+      "timestamp": 1780938181149
+    },
+    {
+      "id": "f79d7594-3d8d-4205-85b7-9da8d433c9c4",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.205399999999997,
+      "longitude": 121.33370000000001,
+      "speed": 49.773933402351254,
+      "timestamp": 1780938241149
+    },
+    {
+      "id": "b727a348-01ab-4025-bc34-7523ee6de07b",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2059,
+      "longitude": 121.33430000000001,
+      "speed": 37.06584213204308,
+      "timestamp": 1780938301149
+    },
+    {
+      "id": "ae0f069c-aa52-43ca-9959-82fd638d4adb",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2064,
+      "longitude": 121.3349,
+      "speed": 51.52620886533626,
+      "timestamp": 1780938361149
+    },
+    {
+      "id": "415f369e-628b-4ded-b21b-fe7d5ba40b2e",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.206899999999997,
+      "longitude": 121.33550000000001,
+      "speed": 35.9737698929836,
+      "timestamp": 1780938421149
+    },
+    {
+      "id": "c23ca7f2-e071-4d29-835e-53bee0b8c76a",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2074,
+      "longitude": 121.3361,
+      "speed": 42.05007975686777,
+      "timestamp": 1780938481149
+    },
+    {
+      "id": "e0afe0af-df0b-416d-a066-da5f0fec7616",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2079,
+      "longitude": 121.33670000000001,
+      "speed": 35.69801157456982,
+      "timestamp": 1780938541149
+    },
+    {
+      "id": "27e77e40-2200-4d27-8a76-44aedbedad51",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.208399999999997,
+      "longitude": 121.33730000000001,
+      "speed": 52.20054015405238,
+      "timestamp": 1780938601149
+    },
+    {
+      "id": "e3906b98-391d-4c8c-a99b-cdb47761f026",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2089,
+      "longitude": 121.3379,
+      "speed": 56.10744189261332,
+      "timestamp": 1780938661149
+    },
+    {
+      "id": "0962019a-2c04-4ec8-86d9-e66db0d822bd",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2094,
+      "longitude": 121.33850000000001,
+      "speed": 56.57784418550443,
+      "timestamp": 1780938721149
+    },
+    {
+      "id": "0cbae54e-9348-4449-b935-f3557bf3866b",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.209899999999998,
+      "longitude": 121.3391,
+      "speed": 44.120933314766525,
+      "timestamp": 1780938781149
+    },
+    {
+      "id": "1afab81a-42b6-4e28-885d-58a1817e5e66",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2104,
+      "longitude": 121.33970000000001,
+      "speed": 49.675976336425165,
+      "timestamp": 1780938841149
+    },
+    {
+      "id": "763409c4-eb38-48fd-a55a-3f79e1e5b014",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2109,
+      "longitude": 121.34030000000001,
+      "speed": 41.43816535405048,
+      "timestamp": 1780938901149
+    },
+    {
+      "id": "faae4fe4-bd14-4206-a9d0-8e91caa36a17",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.211399999999998,
+      "longitude": 121.3409,
+      "speed": 54.31476523336839,
+      "timestamp": 1780938961149
+    },
+    {
+      "id": "bd3e3332-913d-4017-8423-a3742dc5348b",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2119,
+      "longitude": 121.34150000000001,
+      "speed": 36.44054744761789,
+      "timestamp": 1780939021149
+    },
+    {
+      "id": "72cf36e4-dff3-4877-be08-bb38cff8494e",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2124,
+      "longitude": 121.3421,
+      "speed": 55.01431116856902,
+      "timestamp": 1780939081149
+    },
+    {
+      "id": "43dba58c-1935-4c11-91b4-b0e89ca51345",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.212899999999998,
+      "longitude": 121.34270000000001,
+      "speed": 45.539967008895914,
+      "timestamp": 1780939141149
+    },
+    {
+      "id": "e9646de5-e7c8-44d6-957a-ad24a6a4dd2a",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2134,
+      "longitude": 121.3433,
+      "speed": 44.76976244280945,
+      "timestamp": 1780939201149
+    },
+    {
+      "id": "8e2f74c7-3345-4226-a516-e779930a4213",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2139,
+      "longitude": 121.3439,
+      "speed": 41.88886829804203,
+      "timestamp": 1780939261149
+    },
+    {
+      "id": "6d0fab24-567f-4582-a8a4-df264ddcc686",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.214399999999998,
+      "longitude": 121.34450000000001,
+      "speed": 36.34102122802,
+      "timestamp": 1780939321149
+    },
+    {
+      "id": "ba251a49-397c-4a0b-9a49-539163957469",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2149,
+      "longitude": 121.3451,
+      "speed": 50.12803286021665,
+      "timestamp": 1780939381149
+    },
+    {
+      "id": "5307753b-585c-48ea-990f-02f52ed92db4",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2154,
+      "longitude": 121.34570000000001,
+      "speed": 43.15098074157676,
+      "timestamp": 1780939441149
+    },
+    {
+      "id": "554949ed-d17a-494f-8402-18a416fc0ecf",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.215899999999998,
+      "longitude": 121.3463,
+      "speed": 51.12275718206793,
+      "timestamp": 1780939501149
+    },
+    {
+      "id": "622c4bd9-924a-4b43-8a29-4329b287f9d8",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2164,
+      "longitude": 121.3469,
+      "speed": 38.08907216667001,
+      "timestamp": 1780939561149
+    },
+    {
+      "id": "1368e6b4-5e2d-482b-95c6-44edfa5eec2c",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2169,
+      "longitude": 121.34750000000001,
+      "speed": 53.996328389083104,
+      "timestamp": 1780939621149
+    },
+    {
+      "id": "aff5fe1d-83f1-46d2-8a00-bdbb053b84c1",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.217399999999998,
+      "longitude": 121.3481,
+      "speed": 36.567337890101314,
+      "timestamp": 1780939681149
+    },
+    {
+      "id": "9f55e3fa-6d44-4a3e-a119-3fa80fc389ed",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2179,
+      "longitude": 121.34870000000001,
+      "speed": 54.40399111943658,
+      "timestamp": 1780939741149
+    },
+    {
+      "id": "dd2101e4-69cb-4264-90d3-1769676f435c",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2184,
+      "longitude": 121.3493,
+      "speed": 39.4093886704414,
+      "timestamp": 1780939801149
+    },
+    {
+      "id": "8ff33e8e-ec04-4fad-8803-195b889ec64c",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.218899999999998,
+      "longitude": 121.3499,
+      "speed": 35.15031722676368,
+      "timestamp": 1780939861149
+    },
+    {
+      "id": "0b01349f-4744-4091-b1a5-2c8ebdf51259",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2194,
+      "longitude": 121.35050000000001,
+      "speed": 45.227432670467614,
+      "timestamp": 1780939921149
+    },
+    {
+      "id": "d5a355f8-90a2-4700-87ec-eefa1dcce45b",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2199,
+      "longitude": 121.3511,
+      "speed": 39.94909528857832,
+      "timestamp": 1780939981149
+    },
+    {
+      "id": "62694e81-463a-4d37-9b37-cbaea8a3ffc9",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.220399999999998,
+      "longitude": 121.35170000000001,
+      "speed": 48.70659708067183,
+      "timestamp": 1780940041149
+    },
+    {
+      "id": "968aff22-56be-416d-8e56-17a02818968b",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2209,
+      "longitude": 121.3523,
+      "speed": 50.50609936705743,
+      "timestamp": 1780940101149
+    },
+    {
+      "id": "6fa1188a-84d5-4403-996a-980750111402",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2214,
+      "longitude": 121.3529,
+      "speed": 45.18768900617459,
+      "timestamp": 1780940161149
+    },
+    {
+      "id": "35f2f76c-16d7-42d9-a958-502fef7c9357",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.221899999999998,
+      "longitude": 121.35350000000001,
+      "speed": 38.86186433669728,
+      "timestamp": 1780940221149
+    },
+    {
+      "id": "a60c26b0-5804-43ca-8916-7ebbda801b56",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2224,
+      "longitude": 121.3541,
+      "speed": 52.81388131769155,
+      "timestamp": 1780940281149
+    },
+    {
+      "id": "0f6b9f2c-fabd-4bea-9102-20aef9a6903b",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2229,
+      "longitude": 121.35470000000001,
+      "speed": 53.82945691577095,
+      "timestamp": 1780940341149
+    },
+    {
+      "id": "6888e196-f618-4c37-a7f2-f5b1dcbfe8de",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.223399999999998,
+      "longitude": 121.3553,
+      "speed": 56.397464518141476,
+      "timestamp": 1780940401149
+    },
+    {
+      "id": "d9e496e6-4c95-4413-b7fe-4ca5be7cf552",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2239,
+      "longitude": 121.3559,
+      "speed": 58.2143311933924,
+      "timestamp": 1780940461149
+    },
+    {
+      "id": "0a9c498f-7432-49de-b958-312fdad7f270",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2244,
+      "longitude": 121.35650000000001,
+      "speed": 47.8517078261527,
+      "timestamp": 1780940521149
+    },
+    {
+      "id": "6bf31c6e-3929-47bb-8cc8-758f72d4a517",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.224899999999998,
+      "longitude": 121.3571,
+      "speed": 54.91991414734344,
+      "timestamp": 1780940581149
+    },
+    {
+      "id": "bdd9e3dd-76f3-4da7-a11d-c0cdc30be587",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2254,
+      "longitude": 121.35770000000001,
+      "speed": 55.88820807561241,
+      "timestamp": 1780940641149
+    },
+    {
+      "id": "ddb7e0f4-abdf-4d65-9d60-66f4162a27e9",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2259,
+      "longitude": 121.3583,
+      "speed": 58.46196376685436,
+      "timestamp": 1780940701149
+    },
+    {
+      "id": "f3e9f48b-546d-490c-94bb-0202f896ccf6",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.226399999999998,
+      "longitude": 121.3589,
+      "speed": 47.56695718414758,
+      "timestamp": 1780940761149
+    },
+    {
+      "id": "b9f3c40f-a3f8-49fb-9876-4dbdd5320157",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2269,
+      "longitude": 121.35950000000001,
+      "speed": 41.473888068948554,
+      "timestamp": 1780940821149
+    },
+    {
+      "id": "acde9250-7b23-4cb3-8084-cb836055ad36",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2274,
+      "longitude": 121.3601,
+      "speed": 58.01616571537903,
+      "timestamp": 1780940881149
+    },
+    {
+      "id": "1b2aa94f-9abc-4f71-bb12-88e6d7889f9d",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.227899999999998,
+      "longitude": 121.36070000000001,
+      "speed": 42.08638308941508,
+      "timestamp": 1780940941149
+    },
+    {
+      "id": "9665ad8f-cec8-40d9-bb59-bb8e907be144",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.228399999999997,
+      "longitude": 121.3613,
+      "speed": 48.63612861790014,
+      "timestamp": 1780941001149
+    },
+    {
+      "id": "3ab92fe5-ad0d-4c9e-830f-00c0d7736903",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2289,
+      "longitude": 121.3619,
+      "speed": 52.397381437050115,
+      "timestamp": 1780941061149
+    },
+    {
+      "id": "96185b29-8efe-491a-baef-e0c289799ef6",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2294,
+      "longitude": 121.36250000000001,
+      "speed": 45.13869686835329,
+      "timestamp": 1780941121149
+    },
+    {
+      "id": "24e0a9e0-0859-4749-8c42-a0d545409886",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.229899999999997,
+      "longitude": 121.3631,
+      "speed": 42.98994706278894,
+      "timestamp": 1780941181149
+    },
+    {
+      "id": "3edf3710-3298-48c1-94d1-5572aa190c9b",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2304,
+      "longitude": 121.36370000000001,
+      "speed": 52.404461954326834,
+      "timestamp": 1780941241149
+    },
+    {
+      "id": "4eb821b2-5b32-4e58-bb73-554db0545bdb",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2309,
+      "longitude": 121.3643,
+      "speed": 37.6072187461345,
+      "timestamp": 1780941301149
+    },
+    {
+      "id": "bb07454d-8c05-45ec-a506-81bc08928842",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.231399999999997,
+      "longitude": 121.3649,
+      "speed": 38.65163289628417,
+      "timestamp": 1780941361149
+    },
+    {
+      "id": "630d9d88-2735-46d0-82d9-46f8b3b06665",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2319,
+      "longitude": 121.36550000000001,
+      "speed": 57.476038999972985,
+      "timestamp": 1780941421149
+    },
+    {
+      "id": "60baaf51-600e-4e79-9297-55ec1ce0a688",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2324,
+      "longitude": 121.3661,
+      "speed": 43.99404302463346,
+      "timestamp": 1780941481149
+    },
+    {
+      "id": "29f3fea6-421f-4608-a80a-6f4797d90215",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.232899999999997,
+      "longitude": 121.36670000000001,
+      "speed": 39.00361881625423,
+      "timestamp": 1780941541149
+    },
+    {
+      "id": "efe3b4af-feb7-43fd-bb85-2c19f33ce4b8",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2334,
+      "longitude": 121.3673,
+      "speed": 38.618474840143755,
+      "timestamp": 1780941601149
+    },
+    {
+      "id": "f872503f-155f-4e63-b7da-8b44672530ca",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2339,
+      "longitude": 121.3679,
+      "speed": 36.39414261540912,
+      "timestamp": 1780941661149
+    },
+    {
+      "id": "7131b685-d1b5-479d-9260-79823a1f9fee",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.234399999999997,
+      "longitude": 121.36850000000001,
+      "speed": 59.71622485672509,
+      "timestamp": 1780941721149
+    },
+    {
+      "id": "41f8a7f1-c6b4-425f-957c-5dc11db458b5",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2349,
+      "longitude": 121.3691,
+      "speed": 36.72882449713933,
+      "timestamp": 1780941781149
+    },
+    {
+      "id": "6afaf27c-31b4-42f4-819c-97fa80bfb496",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2354,
+      "longitude": 121.36970000000001,
+      "speed": 49.209573401218435,
+      "timestamp": 1780941841149
+    },
+    {
+      "id": "62bba307-e6c6-47d9-bce3-6ebbd2503940",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.235899999999997,
+      "longitude": 121.3703,
+      "speed": 56.88547589265812,
+      "timestamp": 1780941901149
+    },
+    {
+      "id": "bcec5945-642a-4f46-8ea4-d5c9548d0c19",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2364,
+      "longitude": 121.3709,
+      "speed": 38.77017482253176,
+      "timestamp": 1780941961149
+    },
+    {
+      "id": "19be86d9-ebf6-4422-ae66-535b7921cdb9",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2369,
+      "longitude": 121.37150000000001,
+      "speed": 51.414119310037506,
+      "timestamp": 1780942021149
+    },
+    {
+      "id": "6454cb31-6780-4936-a393-4e86ae46b3a9",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.237399999999997,
+      "longitude": 121.3721,
+      "speed": 55.802730887762564,
+      "timestamp": 1780942081149
+    },
+    {
+      "id": "375a02ce-373a-4cdf-bec7-8325f92c03c4",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2379,
+      "longitude": 121.37270000000001,
+      "speed": 56.09961102910779,
+      "timestamp": 1780942141149
+    },
+    {
+      "id": "03617c04-0818-4723-8962-6a082bad0843",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2384,
+      "longitude": 121.3733,
+      "speed": 58.92298528879222,
+      "timestamp": 1780942201149
+    },
+    {
+      "id": "5eb9dddf-877c-448f-9d4e-57f32621c90b",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.238899999999997,
+      "longitude": 121.3739,
+      "speed": 43.79433014843246,
+      "timestamp": 1780942261149
+    },
+    {
+      "id": "edcfe6bf-c101-49c3-b68b-c32ac8efe77a",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2394,
+      "longitude": 121.37450000000001,
+      "speed": 58.561451031664014,
+      "timestamp": 1780942321149
+    },
+    {
+      "id": "6cb7b137-5efd-4d19-9fde-127c794f5b1d",
+      "waybillId": "e2b56bd8-e61e-4c4f-a61f-e179b47188ab",
+      "vehicleId": "b6cf6eb4-45fd-4fc4-a875-68d600900431",
+      "latitude": 31.2399,
+      "longitude": 121.3751,
+      "speed": 36.639592915482964,
+      "timestamp": 1780942381149
+    }
+  ]
+}
