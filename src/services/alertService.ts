@@ -67,19 +67,14 @@ export class AlertService {
     return { isAbnormal: false, alertType: null, deviation: 0, description: '' };
   }
 
-  private findObservingAlert(waybillId: string, zoneId: string, alertType: AlertType): Alert | undefined {
-    return this.storage
-      .getAlerts(waybillId)
-      .find(a => a.zoneId === zoneId && a.alertType === alertType && a.status === 'observing');
-  }
-
-  private findActiveOrObservingAlert(waybillId: string, zoneId: string, alertType: AlertType): Alert | undefined {
+  private findOngoingAlert(waybillId: string, zoneId: string, alertType: AlertType): Alert | undefined {
     return this.storage
       .getAlerts(waybillId)
       .find(
         a =>
           a.zoneId === zoneId &&
           a.alertType === alertType &&
+          !a.endTime &&
           (a.status === 'observing' || a.status === 'pending' || a.status === 'processing')
       );
   }
@@ -99,13 +94,15 @@ export class AlertService {
           a =>
             a.zoneId === record.zoneId &&
             (a.alertType === 'over_temp_high' || a.alertType === 'over_temp_low') &&
-            a.status === 'observing'
+            a.status === 'observing' &&
+            !a.endTime
         );
       if (observingAlert) {
+        const duration = Math.floor((record.timestamp - observingAlert.startTime) / 1000);
         this.storage.updateAlert(observingAlert.id, {
           status: 'resolved',
           endTime: record.timestamp,
-          durationSeconds: Math.floor((record.timestamp - observingAlert.startTime) / 1000),
+          durationSeconds: duration,
           result: '温度自动恢复正常，未达到持续阈值',
         });
       }
@@ -116,18 +113,20 @@ export class AlertService {
           a =>
             a.zoneId === record.zoneId &&
             (a.alertType === 'over_temp_high' || a.alertType === 'over_temp_low') &&
-            (a.status === 'pending' || a.status === 'processing')
+            (a.status === 'pending' || a.status === 'processing') &&
+            !a.endTime
         );
-      if (activeAlert && !activeAlert.endTime) {
+      if (activeAlert) {
+        const duration = Math.floor((record.timestamp - activeAlert.startTime) / 1000);
         this.storage.updateAlert(activeAlert.id, {
           endTime: record.timestamp,
-          durationSeconds: Math.floor((record.timestamp - activeAlert.startTime) / 1000),
+          durationSeconds: duration,
         });
       }
       return null;
     }
 
-    const existingAlert = this.findActiveOrObservingAlert(
+    const existingAlert = this.findOngoingAlert(
       record.waybillId,
       record.zoneId,
       info.alertType as AlertType
@@ -169,7 +168,7 @@ export class AlertService {
         durationSeconds: durationSec,
       });
       if (existingAlert.status === 'pending' || existingAlert.status === 'processing') {
-        return existingAlert;
+        return { ...existingAlert, durationSeconds: durationSec };
       }
       return null;
     }
@@ -204,8 +203,8 @@ export class AlertService {
     if (durationSeconds < zone.durationThreshold) return null;
 
     const alerts = this.storage
-      .getActiveAlerts(waybillId, zoneId)
-      .filter(a => a.alertType === 'door_open_timeout');
+      .getAlerts(waybillId)
+      .filter(a => a.zoneId === zoneId && a.alertType === 'door_open_timeout' && !a.endTime);
 
     if (alerts.length > 0) return null;
 
@@ -227,6 +226,22 @@ export class AlertService {
     return this.storage.addAlert(alert);
   }
 
+  acknowledgeAlert(alertId: string, updates: {
+    handlerId?: string;
+    handlerName?: string;
+  }): Alert | null {
+    const alert = this.storage.getAlertById(alertId);
+    if (!alert) return null;
+    if (alert.status === 'resolved' || alert.status === 'ignored') return null;
+    const updated = this.storage.updateAlert(alertId, {
+      status: 'processing',
+      handlerId: updates.handlerId,
+      handlerName: updates.handlerName,
+      handleTime: Date.now(),
+    });
+    return updated || null;
+  }
+
   resolveAlert(alertId: string, updates: {
     handlerId?: string;
     handlerName?: string;
@@ -239,11 +254,11 @@ export class AlertService {
     if (!alert) return null;
     const now = Date.now();
     const endTime = alert.endTime || now;
-    const duration = Math.floor((endTime - alert.startTime) / 1000);
+    const durationSeconds = Math.max(0, Math.floor((endTime - alert.startTime) / 1000));
     const updated = this.storage.updateAlert(alertId, {
       status: 'resolved',
       endTime,
-      durationSeconds: duration,
+      durationSeconds,
       handlerId: updates.handlerId,
       handlerName: updates.handlerName,
       handleTime: now,

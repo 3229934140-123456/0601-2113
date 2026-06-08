@@ -149,15 +149,32 @@ export interface TemperatureReport {
   totalDuration: number;
   zones: Array<{
     zoneName: string;
+    thresholdMin: number;
+    thresholdMax: number;
     minTemp: number;
     maxTemp: number;
     avgTemp: number;
-    thresholdMin: number;
-    thresholdMax: number;
     exceptionCount: number;
     exceptionDuration: number;
     maxDeviation: number;
     inComplianceRate: number;
+    abnormalTimeline: Array<{
+      alertId: string;
+      alertType: AlertType;
+      alertLevel: AlertLevel;
+      description: string;
+      startTime: number;
+      endTime?: number;
+      durationSeconds?: number;
+      status: AlertStatus;
+      temperature?: number;
+      thresholdMin?: number;
+      thresholdMax?: number;
+      handlerName?: string;
+      handleMethod?: string;
+      handleTime?: number;
+      result?: string;
+    }>;
     temperatureSeries: Array<{
       timestamp: number;
       temperature: number;
@@ -169,11 +186,18 @@ export interface TemperatureReport {
     alertType: AlertType;
     alertLevel: AlertLevel;
     description: string;
+    zoneId?: string;
+    zoneName?: string;
     startTime: number;
     endTime?: number;
     durationSeconds?: number;
     status: AlertStatus;
+    handlerId?: string;
+    handlerName?: string;
+    handleTime?: number;
     handleMethod?: string;
+    handleRemark?: string;
+    handlePhotos?: string[];
     result?: string;
   }>;
   doorEvents: Array<{
@@ -182,6 +206,31 @@ export interface TemperatureReport {
     timestamp: number;
     durationSeconds?: number;
     location?: string;
+    operator?: string;
+    remark?: string;
+  }>;
+  doorTimeline: Array<{
+    type: 'door_open' | 'door_close';
+    timestamp: number;
+    durationSeconds?: number;
+    location?: string;
+  }>;
+  handlingRecords: Array<{
+    alertId: string;
+    alertType: AlertType;
+    alertLevel: AlertLevel;
+    description: string;
+    startTime: number;
+    endTime?: number;
+    durationSeconds?: number;
+    status: AlertStatus;
+    handlerId?: string;
+    handlerName?: string;
+    handleTime?: number;
+    handleMethod?: string;
+    handleRemark?: string;
+    handlePhotos?: string[];
+    result?: string;
   }>;
   exceptionSummary: {
     totalAlerts: number;

@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
 import { Storage } from '../storage';
-import { TemperatureReport, TemperatureRecord, TemperatureZone } from '../types';
+import { TemperatureReport, Alert, TemperatureRecord, TemperatureZone, DoorEvent } from '../types';
 import { success, notFound } from '../utils/response';
 
 const router = Router();
@@ -10,48 +10,24 @@ function isRecordNormal(r: TemperatureRecord, zone: TemperatureZone): boolean {
   return r.temperature >= zone.minTemp && r.temperature <= zone.maxTemp;
 }
 
-function calculateExceptionDuration(records: TemperatureRecord[], zone: TemperatureZone): number {
-  if (records.length < 2) return 0;
-  const sorted = [...records].sort((a, b) => a.timestamp - b.timestamp);
-  let totalDuration = 0;
-  let segmentStart: number | null = null;
-
-  for (let i = 0; i < sorted.length; i++) {
-    const curr = sorted[i];
-    const abnormal = !isRecordNormal(curr, zone);
-    if (abnormal) {
-      if (segmentStart === null) {
-        segmentStart = curr.timestamp;
-      }
-      if (i === sorted.length - 1 && segmentStart !== null) {
-        totalDuration += Math.floor((curr.timestamp - segmentStart) / 1000);
-      }
-    } else {
-      if (segmentStart !== null) {
-        const prev = sorted[i - 1];
-        totalDuration += Math.floor((prev.timestamp - segmentStart) / 1000);
-        segmentStart = null;
-      }
+function calcZoneExceptionDurationFromAlerts(
+  alerts: Alert[],
+  zoneId: string,
+): { totalDurationSec: number; totalAlerts: number } {
+  let totalDurationSec = 0;
+  let totalAlerts = 0;
+  for (const a of alerts) {
+    if (a.zoneId !== zoneId && a.zoneId !== 'default') continue;
+    if (a.alertType !== 'over_temp_high' && a.alertType !== 'over_temp_low') continue;
+    if (a.status === 'observing' && a.result?.includes('未达到持续阈值')) continue;
+    totalAlerts++;
+    if (typeof a.durationSeconds === 'number') {
+      totalDurationSec += a.durationSeconds;
+    } else if (a.startTime && a.endTime) {
+      totalDurationSec += Math.floor((a.endTime - a.startTime) / 1000);
     }
   }
-  return Math.max(0, totalDuration);
-}
-
-function countExceptionSegments(records: TemperatureRecord[], zone: TemperatureZone): number {
-  if (records.length === 0) return 0;
-  const sorted = [...records].sort((a, b) => a.timestamp - b.timestamp);
-  let count = 0;
-  let inSegment = false;
-  for (const r of sorted) {
-    const abnormal = !isRecordNormal(r, zone);
-    if (abnormal && !inSegment) {
-      count++;
-      inSegment = true;
-    } else if (!abnormal && inSegment) {
-      inSegment = false;
-    }
-  }
-  return count;
+  return { totalDurationSec, totalAlerts };
 }
 
 function generateReport(waybillId: string): TemperatureReport | null {
@@ -60,7 +36,10 @@ function generateReport(waybillId: string): TemperatureReport | null {
 
   const allRecords = storage.getTemperatureRecords(waybillId);
   const allAlerts = storage.getAlerts(waybillId);
-  const alerts = allAlerts.filter(a => a.status !== 'observing');
+  const publicAlerts = allAlerts.filter(a => a.status !== 'observing' || !a.result?.includes('未达到持续阈值'));
+  const alertsForCustomer = allAlerts.filter(
+    a => a.status !== 'observing'
+  );
   const doorEvents = storage.getDoorEvents(waybillId);
 
   const departureTime = waybill.actualDepartureTime || waybill.planDepartureTime || (allRecords[0]?.timestamp);
@@ -77,8 +56,10 @@ function generateReport(waybillId: string): TemperatureReport | null {
     const maxTemp = temps.length > 0 ? Math.max(...temps) : 0;
     const avgTemp = temps.length > 0 ? temps.reduce((a, b) => a + b, 0) / temps.length : 0;
 
-    const exceptionCount = countExceptionSegments(zoneRecords, zone);
-    const exceptionDuration = calculateExceptionDuration(zoneRecords, zone);
+    const { totalDurationSec: exceptionDuration, totalAlerts: exceptionCount } = calcZoneExceptionDurationFromAlerts(
+      publicAlerts,
+      zone.zoneId
+    );
 
     let maxDeviation = 0;
     const seriesWithNormality = zoneRecords.map(r => {
@@ -105,41 +86,113 @@ function generateReport(waybillId: string): TemperatureReport | null {
       inComplianceRate = parseFloat(((normalCount / seriesWithNormality.length) * 100).toFixed(2));
     }
 
+    const abnormalTimeline = alertsForCustomer
+      .filter(a => (a.zoneId === zone.zoneId || a.zoneId === 'default') &&
+        (a.alertType === 'over_temp_high' || a.alertType === 'over_temp_low'))
+      .sort((a, b) => a.startTime - b.startTime)
+      .map(a => ({
+        alertId: a.id,
+        alertType: a.alertType,
+        alertLevel: a.alertLevel,
+        description: a.description,
+        startTime: a.startTime,
+        endTime: a.endTime,
+        durationSeconds: a.durationSeconds,
+        status: a.status,
+        temperature: a.temperature,
+        thresholdMin: a.thresholdMin,
+        thresholdMax: a.thresholdMax,
+        handlerName: a.handlerName,
+        handleMethod: a.handleMethod,
+        handleTime: a.handleTime,
+        result: a.result,
+      }));
+
     return {
       zoneName: zone.zoneName,
+      thresholdMin: zone.minTemp,
+      thresholdMax: zone.maxTemp,
       minTemp: parseFloat(minTemp.toFixed(2)),
       maxTemp: parseFloat(maxTemp.toFixed(2)),
       avgTemp: parseFloat(avgTemp.toFixed(2)),
-      thresholdMin: zone.minTemp,
-      thresholdMax: zone.maxTemp,
       exceptionCount,
       exceptionDuration,
       maxDeviation: parseFloat(maxDeviation.toFixed(2)),
       inComplianceRate,
+      abnormalTimeline,
       temperatureSeries: sampledSeries,
     };
   });
 
-  const reportAlerts = alerts.map(a => ({
-    id: a.id,
-    alertType: a.alertType,
-    alertLevel: a.alertLevel,
-    description: a.description,
-    startTime: a.startTime,
-    endTime: a.endTime,
-    durationSeconds: a.durationSeconds,
-    status: a.status,
-    handleMethod: a.handleMethod,
-    result: a.result,
-  }));
+  const reportAlerts = alertsForCustomer
+    .sort((a, b) => a.startTime - b.startTime)
+    .map(a => ({
+      id: a.id,
+      alertType: a.alertType,
+      alertLevel: a.alertLevel,
+      description: a.description,
+      zoneId: a.zoneId,
+      zoneName: waybill.temperatureZones.find(z => z.zoneId === a.zoneId)?.zoneName,
+      startTime: a.startTime,
+      endTime: a.endTime,
+      durationSeconds: a.durationSeconds,
+      status: a.status,
+      handlerId: a.handlerId,
+      handlerName: a.handlerName,
+      handleTime: a.handleTime,
+      handleMethod: a.handleMethod,
+      handleRemark: a.handleRemark,
+      handlePhotos: a.handlePhotos,
+      result: a.result,
+    }));
 
-  const reportDoorEvents = doorEvents.map(e => ({
-    id: e.id,
-    eventType: e.eventType,
-    timestamp: e.timestamp,
-    durationSeconds: e.durationSeconds,
-    location: e.location?.address,
-  }));
+  const handlingRecords = alertsForCustomer
+    .filter(a => a.status === 'processing' || a.status === 'resolved' || a.status === 'ignored')
+    .sort((a, b) => (a.handleTime || 0) - (b.handleTime || 0))
+    .map(a => ({
+      alertId: a.id,
+      alertType: a.alertType,
+      alertLevel: a.alertLevel,
+      description: a.description,
+      startTime: a.startTime,
+      endTime: a.endTime,
+      durationSeconds: a.durationSeconds,
+      status: a.status,
+      handlerId: a.handlerId,
+      handlerName: a.handlerName,
+      handleTime: a.handleTime,
+      handleMethod: a.handleMethod,
+      handleRemark: a.handleRemark,
+      handlePhotos: a.handlePhotos,
+      result: a.result,
+    }));
+
+  const reportDoorEvents = doorEvents
+    .sort((a, b) => a.timestamp - b.timestamp)
+    .map(e => ({
+      id: e.id,
+      eventType: e.eventType,
+      timestamp: e.timestamp,
+      durationSeconds: e.durationSeconds,
+      location: e.location?.address,
+      operator: e.operator,
+      remark: e.remark,
+    }));
+
+  const doorTimeline: Array<{
+    type: 'door_open' | 'door_close';
+    timestamp: number;
+    durationSeconds?: number;
+    location?: string;
+  }> = [];
+  for (const e of reportDoorEvents) {
+    doorTimeline.push({
+      type: e.eventType === 'open' ? 'door_open' : 'door_close',
+      timestamp: e.timestamp,
+      durationSeconds: e.durationSeconds,
+      location: e.location,
+    });
+  }
 
   return {
     waybillId: waybill.id,
@@ -154,11 +207,13 @@ function generateReport(waybillId: string): TemperatureReport | null {
     zones: zonesData,
     alerts: reportAlerts,
     doorEvents: reportDoorEvents,
+    doorTimeline,
+    handlingRecords,
     exceptionSummary: {
-      totalAlerts: alerts.length,
-      highLevelCount: alerts.filter(a => a.alertLevel === 'high' || a.alertLevel === 'critical').length,
-      resolvedCount: alerts.filter(a => a.status === 'resolved').length,
-      pendingCount: alerts.filter(a => a.status === 'pending' || a.status === 'processing').length,
+      totalAlerts: alertsForCustomer.length,
+      highLevelCount: alertsForCustomer.filter(a => a.alertLevel === 'high' || a.alertLevel === 'critical').length,
+      resolvedCount: alertsForCustomer.filter(a => a.status === 'resolved').length,
+      pendingCount: alertsForCustomer.filter(a => a.status === 'pending' || a.status === 'processing').length,
     },
     signStatus: waybill.signStatus,
     generatedAt: Date.now(),
@@ -171,6 +226,17 @@ router.get('/:waybillId', (req: Request, res: Response) => {
     return notFound(res, '运单不存在');
   }
   success(res, report);
+});
+
+router.get('/:waybillId/download', (req: Request, res: Response) => {
+  const report = generateReport(req.params.waybillId);
+  if (!report) {
+    return notFound(res, '运单不存在');
+  }
+  const filename = `cold-chain-report-${report.waybillNo}-${Date.now()}.json`;
+  res.setHeader('Content-Type', 'application/json; charset=utf-8');
+  res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+  res.json(report);
 });
 
 router.get('/:waybillId/summary', (req: Request, res: Response) => {
@@ -188,14 +254,18 @@ router.get('/:waybillId/summary', (req: Request, res: Response) => {
     arrivalTime: report.arrivalTime,
     zones: report.zones.map(z => ({
       zoneName: z.zoneName,
-      avgTemp: z.avgTemp,
       thresholdMin: z.thresholdMin,
       thresholdMax: z.thresholdMax,
+      minTemp: z.minTemp,
+      maxTemp: z.maxTemp,
+      avgTemp: z.avgTemp,
       inComplianceRate: z.inComplianceRate,
       exceptionCount: z.exceptionCount,
       exceptionDuration: z.exceptionDuration,
     })),
     exceptionSummary: report.exceptionSummary,
+    handlingCount: report.handlingRecords.length,
+    doorEventCount: report.doorEvents.length,
     signStatus: report.signStatus,
     generatedAt: report.generatedAt,
   });
@@ -211,6 +281,21 @@ router.get('/customer/:waybillNo', (req: Request, res: Response) => {
     return notFound(res, '生成报告失败');
   }
   success(res, report);
+});
+
+router.get('/customer/:waybillNo/download', (req: Request, res: Response) => {
+  const waybill = storage.getWaybillByNo(req.params.waybillNo);
+  if (!waybill) {
+    return notFound(res, '运单不存在');
+  }
+  const report = generateReport(waybill.id);
+  if (!report) {
+    return notFound(res, '生成报告失败');
+  }
+  const filename = `cold-chain-report-${report.waybillNo}-${Date.now()}.json`;
+  res.setHeader('Content-Type', 'application/json; charset=utf-8');
+  res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+  res.json(report);
 });
 
 export default router;
