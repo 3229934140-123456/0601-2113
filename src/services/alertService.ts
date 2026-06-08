@@ -27,6 +27,13 @@ function getAlertLevel(type: AlertType, deviation?: number): AlertLevel {
   return 'medium';
 }
 
+interface AbnormalInfo {
+  isAbnormal: boolean;
+  alertType: AlertType | null;
+  deviation: number;
+  description: string;
+}
+
 export class AlertService {
   private storage: Storage;
 
@@ -38,83 +45,166 @@ export class AlertService {
     return waybill.temperatureZones.find(z => z.zoneId === zoneId) || waybill.temperatureZones[0];
   }
 
+  private evaluateTemperature(temp: number, zone: TemperatureZone): AbnormalInfo {
+    if (temp > zone.maxTemp) {
+      const deviation = temp - zone.maxTemp;
+      return {
+        isAbnormal: true,
+        alertType: 'over_temp_high',
+        deviation,
+        description: `温度过高：当前${temp}°C，上限${zone.maxTemp}°C，超出${deviation.toFixed(1)}°C`,
+      };
+    }
+    if (temp < zone.minTemp) {
+      const deviation = temp - zone.minTemp;
+      return {
+        isAbnormal: true,
+        alertType: 'over_temp_low',
+        deviation,
+        description: `温度过低：当前${temp}°C，下限${zone.minTemp}°C，低于${Math.abs(deviation).toFixed(1)}°C`,
+      };
+    }
+    return { isAbnormal: false, alertType: null, deviation: 0, description: '' };
+  }
+
+  private findObservingAlert(waybillId: string, zoneId: string, alertType: AlertType): Alert | undefined {
+    return this.storage
+      .getAlerts(waybillId)
+      .find(a => a.zoneId === zoneId && a.alertType === alertType && a.status === 'observing');
+  }
+
+  private findActiveOrObservingAlert(waybillId: string, zoneId: string, alertType: AlertType): Alert | undefined {
+    return this.storage
+      .getAlerts(waybillId)
+      .find(
+        a =>
+          a.zoneId === zoneId &&
+          a.alertType === alertType &&
+          (a.status === 'observing' || a.status === 'pending' || a.status === 'processing')
+      );
+  }
+
   checkTemperatureAndCreateAlert(record: TemperatureRecord): Alert | null {
     const waybill = this.storage.getWaybillById(record.waybillId);
     if (!waybill) return null;
     const zone = this.getZoneConfig(waybill, record.zoneId);
     if (!zone) return null;
 
-    let alertType: AlertType | null = null;
-    let description = '';
-    let deviation = 0;
+    const info = this.evaluateTemperature(record.temperature, zone);
 
-    if (record.temperature > zone.maxTemp) {
-      alertType = 'over_temp_high';
-      deviation = record.temperature - zone.maxTemp;
-      description = `温度过高：当前${record.temperature}°C，上限${zone.maxTemp}°C，超出${deviation.toFixed(1)}°C`;
-    } else if (record.temperature < zone.minTemp) {
-      alertType = 'over_temp_low';
-      deviation = record.temperature - zone.minTemp;
-      description = `温度过低：当前${record.temperature}°C，下限${zone.minTemp}°C，低于${Math.abs(deviation).toFixed(1)}°C`;
-    }
-
-    if (!alertType) return null;
-
-    const recentRecords = this.storage.getTemperatureRecords(record.waybillId, record.vehicleId, record.zoneId)
-      .filter(r => r.timestamp >= record.timestamp - zone.durationThreshold * 1000);
-
-    const abnormalCount = recentRecords.filter(r => {
-      if (alertType === 'over_temp_high') return r.temperature > zone.maxTemp;
-      if (alertType === 'over_temp_low') return r.temperature < zone.minTemp;
-      return false;
-    }).length;
-
-    const activeAlerts = this.storage.getActiveAlerts(record.waybillId, record.zoneId)
-      .filter(a => a.alertType === alertType);
-
-    if (activeAlerts.length > 0) {
-      const existing = activeAlerts[0];
-      const duration = record.timestamp - existing.startTime;
-      if (duration >= zone.durationThreshold * 1000 && abnormalCount >= Math.ceil(zone.durationThreshold / 60)) {
-        const level = getAlertLevel(alertType, deviation);
-        this.storage.updateAlert(existing.id, {
-          alertLevel: level,
-          description,
-          temperature: record.temperature,
-          durationSeconds: Math.floor(duration / 1000),
+    if (!info.isAbnormal) {
+      const observingAlert = this.storage
+        .getAlerts(record.waybillId)
+        .find(
+          a =>
+            a.zoneId === record.zoneId &&
+            (a.alertType === 'over_temp_high' || a.alertType === 'over_temp_low') &&
+            a.status === 'observing'
+        );
+      if (observingAlert) {
+        this.storage.updateAlert(observingAlert.id, {
+          status: 'resolved',
+          endTime: record.timestamp,
+          durationSeconds: Math.floor((record.timestamp - observingAlert.startTime) / 1000),
+          result: '温度自动恢复正常，未达到持续阈值',
         });
-        return existing;
+      }
+
+      const activeAlert = this.storage
+        .getAlerts(record.waybillId)
+        .find(
+          a =>
+            a.zoneId === record.zoneId &&
+            (a.alertType === 'over_temp_high' || a.alertType === 'over_temp_low') &&
+            (a.status === 'pending' || a.status === 'processing')
+        );
+      if (activeAlert && !activeAlert.endTime) {
+        this.storage.updateAlert(activeAlert.id, {
+          endTime: record.timestamp,
+          durationSeconds: Math.floor((record.timestamp - activeAlert.startTime) / 1000),
+        });
       }
       return null;
     }
 
-    const level = getAlertLevel(alertType, deviation);
+    const existingAlert = this.findActiveOrObservingAlert(
+      record.waybillId,
+      record.zoneId,
+      info.alertType as AlertType
+    );
+
+    if (existingAlert) {
+      const duration = record.timestamp - existingAlert.startTime;
+      const durationSec = Math.floor(duration / 1000);
+
+      if (existingAlert.status === 'observing') {
+        if (durationSec >= zone.durationThreshold) {
+          const level = getAlertLevel(info.alertType as AlertType, info.deviation);
+          const promoted = this.storage.updateAlert(existingAlert.id, {
+            status: 'pending',
+            alertLevel: level,
+            description: info.description,
+            temperature: record.temperature,
+            thresholdMin: zone.minTemp,
+            thresholdMax: zone.maxTemp,
+            durationSeconds: durationSec,
+            suggestions: [...OVER_TEMP_SUGGESTIONS],
+          });
+          return promoted || null;
+        } else {
+          this.storage.updateAlert(existingAlert.id, {
+            description: info.description,
+            temperature: record.temperature,
+            thresholdMin: zone.minTemp,
+            thresholdMax: zone.maxTemp,
+            durationSeconds: durationSec,
+          });
+          return null;
+        }
+      }
+
+      this.storage.updateAlert(existingAlert.id, {
+        description: info.description,
+        temperature: record.temperature,
+        durationSeconds: durationSec,
+      });
+      if (existingAlert.status === 'pending' || existingAlert.status === 'processing') {
+        return existingAlert;
+      }
+      return null;
+    }
+
+    const level = getAlertLevel(info.alertType as AlertType, info.deviation);
     const alert: Alert = {
       id: uuidv4(),
       waybillId: record.waybillId,
       vehicleId: record.vehicleId,
       zoneId: record.zoneId,
-      alertType: alertType as AlertType,
+      alertType: info.alertType as AlertType,
       alertLevel: level,
-      description,
+      description: info.description,
       temperature: record.temperature,
       thresholdMin: zone.minTemp,
       thresholdMax: zone.maxTemp,
       startTime: record.timestamp,
-      status: 'pending',
+      status: 'observing',
       suggestions: [...OVER_TEMP_SUGGESTIONS],
+      durationSeconds: 0,
       createdAt: Date.now(),
     };
     return this.storage.addAlert(alert);
   }
 
-  checkDoorOpenAlert(waybillId: string, vehicleId: string, zoneId: string, timestamp: number): Alert | null {
+  checkDoorOpenAlert(waybillId: string, vehicleId: string, zoneId: string, timestamp: number, durationSeconds: number): Alert | null {
     const waybill = this.storage.getWaybillById(waybillId);
     if (!waybill) return null;
     const zone = this.getZoneConfig(waybill, zoneId);
     if (!zone) return null;
 
-    const alerts = this.storage.getActiveAlerts(waybillId, zoneId)
+    if (durationSeconds < zone.durationThreshold) return null;
+
+    const alerts = this.storage
+      .getActiveAlerts(waybillId, zoneId)
       .filter(a => a.alertType === 'door_open_timeout');
 
     if (alerts.length > 0) return null;
@@ -126,8 +216,10 @@ export class AlertService {
       zoneId,
       alertType: 'door_open_timeout',
       alertLevel: 'medium',
-      description: '车厢门打开时间过长',
+      description: `车厢门打开${durationSeconds}秒，超过阈值${zone.durationThreshold}秒`,
       startTime: timestamp,
+      endTime: timestamp + durationSeconds * 1000,
+      durationSeconds,
       status: 'pending',
       suggestions: [...DOOR_OPEN_SUGGESTIONS],
       createdAt: Date.now(),
@@ -146,10 +238,11 @@ export class AlertService {
     const alert = this.storage.getAlertById(alertId);
     if (!alert) return null;
     const now = Date.now();
-    const duration = Math.floor((now - alert.startTime) / 1000);
+    const endTime = alert.endTime || now;
+    const duration = Math.floor((endTime - alert.startTime) / 1000);
     const updated = this.storage.updateAlert(alertId, {
       status: 'resolved',
-      endTime: now,
+      endTime,
       durationSeconds: duration,
       handlerId: updates.handlerId,
       handlerName: updates.handlerName,

@@ -1,17 +1,66 @@
 import { Router, Request, Response } from 'express';
 import { Storage } from '../storage';
-import { TemperatureReport } from '../types';
+import { TemperatureReport, TemperatureRecord, TemperatureZone } from '../types';
 import { success, notFound } from '../utils/response';
 
 const router = Router();
 const storage = Storage.getInstance();
+
+function isRecordNormal(r: TemperatureRecord, zone: TemperatureZone): boolean {
+  return r.temperature >= zone.minTemp && r.temperature <= zone.maxTemp;
+}
+
+function calculateExceptionDuration(records: TemperatureRecord[], zone: TemperatureZone): number {
+  if (records.length < 2) return 0;
+  const sorted = [...records].sort((a, b) => a.timestamp - b.timestamp);
+  let totalDuration = 0;
+  let segmentStart: number | null = null;
+
+  for (let i = 0; i < sorted.length; i++) {
+    const curr = sorted[i];
+    const abnormal = !isRecordNormal(curr, zone);
+    if (abnormal) {
+      if (segmentStart === null) {
+        segmentStart = curr.timestamp;
+      }
+      if (i === sorted.length - 1 && segmentStart !== null) {
+        totalDuration += Math.floor((curr.timestamp - segmentStart) / 1000);
+      }
+    } else {
+      if (segmentStart !== null) {
+        const prev = sorted[i - 1];
+        totalDuration += Math.floor((prev.timestamp - segmentStart) / 1000);
+        segmentStart = null;
+      }
+    }
+  }
+  return Math.max(0, totalDuration);
+}
+
+function countExceptionSegments(records: TemperatureRecord[], zone: TemperatureZone): number {
+  if (records.length === 0) return 0;
+  const sorted = [...records].sort((a, b) => a.timestamp - b.timestamp);
+  let count = 0;
+  let inSegment = false;
+  for (const r of sorted) {
+    const abnormal = !isRecordNormal(r, zone);
+    if (abnormal && !inSegment) {
+      count++;
+      inSegment = true;
+    } else if (!abnormal && inSegment) {
+      inSegment = false;
+    }
+  }
+  return count;
+}
 
 function generateReport(waybillId: string): TemperatureReport | null {
   const waybill = storage.getWaybillById(waybillId);
   if (!waybill) return null;
 
   const allRecords = storage.getTemperatureRecords(waybillId);
-  const alerts = storage.getAlerts(waybillId);
+  const allAlerts = storage.getAlerts(waybillId);
+  const alerts = allAlerts.filter(a => a.status !== 'observing');
   const doorEvents = storage.getDoorEvents(waybillId);
 
   const departureTime = waybill.actualDepartureTime || waybill.planDepartureTime || (allRecords[0]?.timestamp);
@@ -28,13 +77,13 @@ function generateReport(waybillId: string): TemperatureReport | null {
     const maxTemp = temps.length > 0 ? Math.max(...temps) : 0;
     const avgTemp = temps.length > 0 ? temps.reduce((a, b) => a + b, 0) / temps.length : 0;
 
-    let exceptionCount = 0;
-    let exceptionDuration = 0;
+    const exceptionCount = countExceptionSegments(zoneRecords, zone);
+    const exceptionDuration = calculateExceptionDuration(zoneRecords, zone);
+
     let maxDeviation = 0;
-    const abnormalRecords = zoneRecords.map(r => {
-      const isNormal = r.temperature >= zone.minTemp && r.temperature <= zone.maxTemp;
+    const seriesWithNormality = zoneRecords.map(r => {
+      const isNormal = isRecordNormal(r, zone);
       if (!isNormal) {
-        exceptionCount++;
         const deviation = r.temperature > zone.maxTemp
           ? r.temperature - zone.maxTemp
           : zone.minTemp - r.temperature;
@@ -47,13 +96,13 @@ function generateReport(waybillId: string): TemperatureReport | null {
       };
     });
 
-    const sampleInterval = Math.max(1, Math.ceil(abnormalRecords.length / 200));
-    const sampledSeries = abnormalRecords.filter((_, i) => i % sampleInterval === 0);
+    const sampleInterval = Math.max(1, Math.ceil(seriesWithNormality.length / 200));
+    const sampledSeries = seriesWithNormality.filter((_, i) => i % sampleInterval === 0);
 
     let inComplianceRate = 100;
-    if (abnormalRecords.length > 0) {
-      const normalCount = abnormalRecords.filter(r => r.isNormal).length;
-      inComplianceRate = parseFloat(((normalCount / abnormalRecords.length) * 100).toFixed(2));
+    if (seriesWithNormality.length > 0) {
+      const normalCount = seriesWithNormality.filter(r => r.isNormal).length;
+      inComplianceRate = parseFloat(((normalCount / seriesWithNormality.length) * 100).toFixed(2));
     }
 
     return {
@@ -144,6 +193,7 @@ router.get('/:waybillId/summary', (req: Request, res: Response) => {
       thresholdMax: z.thresholdMax,
       inComplianceRate: z.inComplianceRate,
       exceptionCount: z.exceptionCount,
+      exceptionDuration: z.exceptionDuration,
     })),
     exceptionSummary: report.exceptionSummary,
     signStatus: report.signStatus,

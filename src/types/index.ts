@@ -76,7 +76,7 @@ export interface DoorEvent {
 }
 
 export type AlertType = 'over_temp_high' | 'over_temp_low' | 'door_open_timeout' | 'device_offline' | 'power_abnormal';
-export type AlertStatus = 'pending' | 'processing' | 'resolved' | 'ignored';
+export type AlertStatus = 'observing' | 'pending' | 'processing' | 'resolved' | 'ignored';
 export type AlertLevel = 'low' | 'medium' | 'high' | 'critical';
 
 export interface Alert {

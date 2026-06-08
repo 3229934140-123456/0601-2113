@@ -15,19 +15,25 @@ router.post('/report', (req: Request, res: Response) => {
     timestamp, location, isDoorOpen, deviceStatus,
   } = req.body;
 
-  let targetVehicleId = vehicleId;
+  let targetVehicleId: string | undefined = vehicleId;
   if (!targetVehicleId && deviceId) {
     const v = storage.getVehicleByDeviceId(deviceId);
     if (v) targetVehicleId = v.id;
+  }
+  if (targetVehicleId && !storage.getVehicleById(targetVehicleId)) {
+    targetVehicleId = undefined;
   }
   if (!targetVehicleId) {
     return badRequest(res, '无法识别车辆，请提供 vehicleId 或 deviceId');
   }
 
-  let targetWaybillId = waybillId;
+  let targetWaybillId: string | undefined = waybillId;
   if (!targetWaybillId) {
     const w = storage.getActiveWaybillByVehicle(targetVehicleId);
     if (w) targetWaybillId = w.id;
+  }
+  if (targetWaybillId && !storage.getWaybillById(targetWaybillId)) {
+    targetWaybillId = undefined;
   }
   if (!targetWaybillId) {
     return badRequest(res, '未找到关联运单，请提供 waybillId');
@@ -55,6 +61,7 @@ router.post('/report', (req: Request, res: Response) => {
   storage.addTemperatureRecord(record);
 
   const alert = alertService.checkTemperatureAndCreateAlert(record);
+  const isFormalAlert = alert && (alert.status === 'pending' || alert.status === 'processing');
 
   if (location) {
     storage.addTrackPoint({
@@ -70,8 +77,8 @@ router.post('/report', (req: Request, res: Response) => {
 
   success(res, {
     record,
-    alertTriggered: !!alert,
-    alert: alert || undefined,
+    alertTriggered: !!isFormalAlert,
+    alert: isFormalAlert ? alert : undefined,
   }, '温度上报成功');
 });
 
@@ -80,27 +87,49 @@ router.post('/batch', (req: Request, res: Response) => {
   if (!Array.isArray(records)) {
     return badRequest(res, 'records 必须是数组');
   }
-  const results: any[] = [];
-  for (const item of records) {
-    let targetVehicleId = item.vehicleId;
+  const successResults: any[] = [];
+  const failedResults: any[] = [];
+
+  for (let idx = 0; idx < records.length; idx++) {
+    const item = records[idx];
+    let targetVehicleId: string | undefined = item.vehicleId;
     if (!targetVehicleId && item.deviceId) {
       const v = storage.getVehicleByDeviceId(item.deviceId);
       if (v) targetVehicleId = v.id;
     }
-    let targetWaybillId = item.waybillId;
+    if (targetVehicleId && !storage.getVehicleById(targetVehicleId)) {
+      targetVehicleId = undefined;
+    }
+    let targetWaybillId: string | undefined = item.waybillId;
     if (!targetWaybillId && targetVehicleId) {
       const w = storage.getActiveWaybillByVehicle(targetVehicleId);
       if (w) targetWaybillId = w.id;
     }
-    if (!targetVehicleId || !targetWaybillId) continue;
+    if (targetWaybillId && !storage.getWaybillById(targetWaybillId)) {
+      targetWaybillId = undefined;
+    }
 
-    const waybill = storage.getWaybillById(targetWaybillId);
+    const errors: string[] = [];
+    if (!targetVehicleId) errors.push('无法识别车辆');
+    if (!targetWaybillId) errors.push('未找到关联运单');
+    if (typeof item.temperature !== 'number') errors.push('缺少有效 temperature 字段');
+
+    if (errors.length > 0) {
+      failedResults.push({
+        index: idx,
+        record: item,
+        errors,
+      });
+      continue;
+    }
+
+    const waybill = storage.getWaybillById(targetWaybillId!);
     const targetZoneId = item.zoneId || (waybill?.temperatureZones[0]?.zoneId || 'default');
 
     const record: TemperatureRecord = {
       id: uuidv4(),
-      waybillId: targetWaybillId,
-      vehicleId: targetVehicleId,
+      waybillId: targetWaybillId!,
+      vehicleId: targetVehicleId!,
       zoneId: targetZoneId,
       temperature: item.temperature,
       humidity: item.humidity,
@@ -111,13 +140,14 @@ router.post('/batch', (req: Request, res: Response) => {
     };
     storage.addTemperatureRecord(record);
     const alert = alertService.checkTemperatureAndCreateAlert(record);
-    results.push({ record, alertTriggered: !!alert });
+    const isFormalAlert = alert && (alert.status === 'pending' || alert.status === 'processing');
+    successResults.push({ record, alertTriggered: !!isFormalAlert, alert: isFormalAlert ? alert : undefined });
 
     if (item.location) {
       storage.addTrackPoint({
         id: uuidv4(),
-        waybillId: targetWaybillId,
-        vehicleId: targetVehicleId,
+        waybillId: targetWaybillId!,
+        vehicleId: targetVehicleId!,
         latitude: item.location.latitude,
         longitude: item.location.longitude,
         address: item.location.address,
@@ -125,7 +155,13 @@ router.post('/batch', (req: Request, res: Response) => {
       });
     }
   }
-  success(res, { count: results.length, results }, '批量上报成功');
+  success(res, {
+    total: records.length,
+    successCount: successResults.length,
+    failedCount: failedResults.length,
+    successResults,
+    failedResults,
+  }, failedResults.length === 0 ? '批量上报成功' : '批量上报完成，部分记录失败');
 });
 
 router.get('/waybill/:waybillId', (req: Request, res: Response) => {
@@ -159,8 +195,8 @@ router.post('/door-event', (req: Request, res: Response) => {
     const lastOpen = [...events].reverse().find(e => e.eventType === 'open');
     if (lastOpen) {
       durationSeconds = Math.floor(((timestamp || Date.now()) - lastOpen.timestamp) / 1000);
-      if (durationSeconds > 300) {
-        alertService.checkDoorOpenAlert(targetWaybillId, vehicleId, targetZoneId, lastOpen.timestamp);
+      if (durationSeconds > 0) {
+        alertService.checkDoorOpenAlert(targetWaybillId, vehicleId, targetZoneId, lastOpen.timestamp, durationSeconds);
       }
     }
   }

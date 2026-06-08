@@ -10,7 +10,7 @@ router.get('/:waybillId', (req: Request, res: Response) => {
   if (!waybill) {
     return notFound(res, '运单不存在');
   }
-  const alerts = storage.getAlerts(req.params.waybillId);
+  const alerts = storage.getAlerts(req.params.waybillId).filter(a => a.status !== 'observing');
   const stats = {
     totalAlerts: alerts.length,
     highLevelCount: alerts.filter(a => a.alertLevel === 'high' || a.alertLevel === 'critical').length,
@@ -60,7 +60,7 @@ router.get('/:waybillId/stats', (req: Request, res: Response) => {
   if (!waybill) {
     return notFound(res, '运单不存在');
   }
-  const alerts = storage.getAlerts(req.params.waybillId);
+  const alerts = storage.getAlerts(req.params.waybillId).filter(a => a.status !== 'observing');
   const records = storage.getTemperatureRecords(req.params.waybillId);
   const doorEvents = storage.getDoorEvents(req.params.waybillId);
 

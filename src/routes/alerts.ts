@@ -8,12 +8,15 @@ const storage = Storage.getInstance();
 const alertService = new AlertService();
 
 router.get('/', (req: Request, res: Response) => {
-  const { waybillId, vehicleId, status } = req.query;
-  const alerts = storage.getAlerts(
+  const { waybillId, vehicleId, status, includeObserving } = req.query;
+  let alerts = storage.getAlerts(
     waybillId as string | undefined,
     vehicleId as string | undefined,
     status as string | undefined
   );
+  if (includeObserving !== 'true') {
+    alerts = alerts.filter(a => a.status !== 'observing');
+  }
   success(res, { alerts, total: alerts.length });
 });
 
@@ -26,7 +29,8 @@ router.get('/:id', (req: Request, res: Response) => {
 });
 
 router.get('/waybill/:waybillId', (req: Request, res: Response) => {
-  const alerts = storage.getAlerts(req.params.waybillId);
+  const allAlerts = storage.getAlerts(req.params.waybillId);
+  const alerts = allAlerts.filter(a => a.status !== 'observing');
   const stats = {
     total: alerts.length,
     pending: alerts.filter(a => a.status === 'pending').length,
@@ -94,7 +98,8 @@ router.get('/vehicle/:vehicleId/active', (req: Request, res: Response) => {
   if (!waybill) {
     return success(res, { alerts: [], total: 0 });
   }
-  const alerts = storage.getAlerts(waybill.id).filter(a => a.status !== 'resolved' && a.status !== 'ignored');
+  const alerts = storage.getAlerts(waybill.id)
+    .filter(a => a.status !== 'resolved' && a.status !== 'ignored' && a.status !== 'observing');
   success(res, { alerts, total: alerts.length, waybillId: waybill.id });
 });
 
